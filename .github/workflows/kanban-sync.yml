@@ -1,0 +1,163 @@
+name: 🔄 Kanban Sync & Project Automation
+
+on:
+  issues:
+    types: [opened, closed, reopened]
+  pull_request:
+    types: [opened, closed, merged]
+  push:
+    branches: [main]
+
+jobs:
+  kanban-sync:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Update Kanban Status
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const fs = require('fs');
+          
+          // Read current KANBAN.md
+          const kanbanPath = 'docs/KANBAN.md';
+          let kanbanContent = '';
+          
+          try {
+            kanbanContent = fs.readFileSync(kanbanPath, 'utf8');
+          } catch (error) {
+            console.log('KANBAN.md not found, skipping update');
+            return;
+          }
+          
+          // Get event data
+          const eventType = context.eventName;
+          const payload = context.payload;
+          
+          console.log(`Event: ${eventType}`);
+          
+          // Update status based on event
+          if (eventType === 'issues') {
+            const issue = payload.issue;
+            const action = payload.action;
+            
+            // Extract task ID from title
+            const taskMatch = issue.title.match(/Task (\d+\.?\d*)/i);
+            if (!taskMatch) {
+              console.log('No task ID found in issue title');
+              return;
+            }
+            
+            const taskId = taskMatch[1];
+            console.log(`Processing Task ${taskId}, Action: ${action}`);
+            
+            // Update KANBAN status
+            let newStatus = '';
+            switch (action) {
+              case 'opened':
+                newStatus = '🔵 PRÓXIMO (READY)';
+                break;
+              case 'closed':
+                newStatus = '🟢 CONCLUÍDO';
+                break;
+              case 'reopened':
+                newStatus = '🟡 EM PROGRESSO (DOING)';
+                break;
+            }
+            
+            // Simple status update logic
+            if (newStatus) {
+              console.log(`Updating Task ${taskId} to ${newStatus}`);
+              // This is a placeholder - in a real implementation, 
+              // you'd parse and update the KANBAN.md file properly
+            }
+          }
+
+  project-automation:
+    runs-on: ubuntu-latest
+    if: contains(github.event.issue.title, 'Task') || contains(github.event.pull_request.title, 'feat(task-')
+    
+    steps:
+    - name: Add to Project Board
+      uses: actions/add-to-project@v0.5.0
+      with:
+        project-url: https://github.com/users/MariaCeleski/projects/1
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Set Task Status
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const { owner, repo } = context.repo;
+          
+          if (context.eventName === 'issues' && context.payload.action === 'opened') {
+            // Add labels to new task issues
+            await github.rest.issues.addLabels({
+              owner,
+              repo,
+              issue_number: context.payload.issue.number,
+              labels: ['task', 'development', 'petadopt']
+            });
+          }
+
+  task-progress-tracker:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Track Completed Tasks
+      uses: actions/github-script@v7
+      with:
+        script: |
+          // Analyze commit messages for completed tasks
+          const commits = context.payload.commits || [];
+          
+          for (const commit of commits) {
+            const message = commit.message;
+            const taskMatch = message.match(/feat\(task-(\d+\.?\d*)\):/i);
+            
+            if (taskMatch) {
+              const taskId = taskMatch[1];
+              console.log(`Task ${taskId} completed in commit ${commit.id}`);
+              
+              // Create a comment or update tracking
+              const issueTitle = `Task ${taskId}`;
+              
+              // Find corresponding issue
+              const { data: issues } = await github.rest.issues.listForRepo({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                state: 'open',
+                labels: 'task'
+              });
+              
+              const taskIssue = issues.find(issue => 
+                issue.title.toLowerCase().includes(taskId.toLowerCase())
+              );
+              
+              if (taskIssue) {
+                // Add completion comment
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: taskIssue.number,
+                  body: `✅ **Task Completed!**\n\nCommit: ${commit.id}\nMessage: ${message}\n\nTask implementation has been merged to main branch.`
+                });
+                
+                // Close the issue
+                await github.rest.issues.update({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: taskIssue.number,
+                  state: 'closed',
+                  labels: ['task', 'development', 'petadopt', 'completed']
+                });
+              }
+            }
+          }
