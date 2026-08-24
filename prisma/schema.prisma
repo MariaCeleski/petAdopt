@@ -1,0 +1,204 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator erd {
+  provider = "prisma-erd-generator"
+  output   = "../docs/erd.svg"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ========================================
+// USER MODELS
+// ========================================
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String
+  avatar        String?
+  password      String?   // Nullable for OAuth users
+  type          UserType  @default(ADOPTER)
+  emailVerified DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  // Relacionamentos
+  pets          Pet[]
+  adoptions     Adoption[]
+  shelter       Shelter?
+  accounts      Account[] // Para NextAuth
+  sessions      Session[] // Para NextAuth
+  
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("sessions")
+}
+
+// ========================================
+// PET MODELS
+// ========================================
+
+model Pet {
+  id            String      @id @default(cuid())
+  name          String
+  species       Species
+  breed         String
+  age           String
+  size          Size
+  gender        Gender
+  color         String
+  description   String      @db.Text
+  isNeutered    Boolean     @default(false)
+  isVaccinated  Boolean     @default(false)
+  healthStatus  String?     @db.Text
+  personality   String[]    // Array de traits
+  images        String[]    // Array de URLs das imagens
+  status        PetStatus   @default(AVAILABLE)
+  location      String?     // Cidade/Estado
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  
+  // Relacionamentos
+  ownerId       String
+  owner         User        @relation(fields: [ownerId], references: [id])
+  shelter       Shelter?    @relation(fields: [shelterId], references: [id])
+  shelterId     String?
+  adoptions     Adoption[]
+  
+  @@index([species, status])
+  @@index([size, status])
+  @@index([ownerId])
+  @@map("pets")
+}
+
+// ========================================
+// ADOPTION MODELS
+// ========================================
+
+model Adoption {
+  id            String          @id @default(cuid())
+  status        AdoptionStatus  @default(PENDING)
+  message       String?         @db.Text
+  adopterInfo   Json           // Informações do formulário
+  rejectionReason String?       @db.Text
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  approvedAt    DateTime?
+  completedAt   DateTime?
+  
+  // Relacionamentos
+  petId         String
+  pet           Pet             @relation(fields: [petId], references: [id])
+  adopterId     String
+  adopter       User            @relation(fields: [adopterId], references: [id])
+  
+  @@index([status])
+  @@index([adopterId])
+  @@index([petId])
+  @@map("adoptions")
+}
+
+// ========================================
+// SHELTER MODELS
+// ========================================
+
+model Shelter {
+  id          String   @id @default(cuid())
+  name        String
+  address     String   @db.Text
+  city        String
+  state       String
+  zipCode     String
+  phone       String
+  email       String
+  website     String?
+  description String?  @db.Text
+  logo        String?  // URL da logo
+  images      String[] // Fotos do abrigo
+  isVerified  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relacionamentos
+  adminId     String   @unique
+  admin       User     @relation(fields: [adminId], references: [id])
+  pets        Pet[]
+  
+  @@map("shelters")
+}
+
+// ========================================
+// ENUMS
+// ========================================
+
+enum UserType {
+  ADOPTER
+  SHELTER_ADMIN
+  INDIVIDUAL_OWNER
+}
+
+enum Species {
+  DOG
+  CAT
+}
+
+enum Size {
+  SMALL    // Até 10kg
+  MEDIUM   // 10-25kg
+  LARGE    // Acima de 25kg
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+enum PetStatus {
+  AVAILABLE
+  PENDING      // Com solicitação em análise
+  ADOPTED      // Adotado
+  UNAVAILABLE  // Temporariamente indisponível
+}
+
+enum AdoptionStatus {
+  PENDING      // Aguardando aprovação
+  APPROVED     // Aprovado pelo owner
+  REJECTED     // Rejeitado pelo owner
+  COMPLETED    // Adoção finalizada
+  CANCELLED    // Cancelado pelo adotante
+}
