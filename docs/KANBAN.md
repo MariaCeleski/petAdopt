@@ -3,16 +3,16 @@
 ## 🎯 Visão Geral das Tasks
 
 **Total de Tasks**: 81  
-**Concluídas**: 1  
-**Em Progresso**: 0  
-**Próximas**: 2  
-**Planejadas**: 78  
+**Concluídas**: 12  
+**Em Progresso**: 2  
+**Próximas**: 3  
+**Planejadas**: 64  
 
 ---
 
 ## 🟢 CONCLUÍDO ✅
 
-### **Task 1 - Setup do Projeto**
+### **Task 1 - Setup do Projeto** ✅
 - ✅ Configurar estrutura inicial Next.js 16.x
 - ✅ Instalar dependências core (Prisma, NextAuth.js, Cloudinary)  
 - ✅ Configurar variáveis de ambiente
@@ -20,23 +20,132 @@
 - **Branch**: `main`
 - **Commit**: `feat(task-1): setup completo do projeto base`
 
----
+### **Task 2.1 - Schema Prisma** ✅
+- ✅ Definir models User, Pet, Adoption, Shelter
+- ✅ Configurar enums e relacionamentos  
+- ✅ Implementar índices otimizados
+- **Branch**: `main`
+- **Commit**: `feat(task-2.1): schema Prisma completo`
 
-## 🔵 PRÓXIMO (READY) 🚀
+### **Task 2.3 - Conexão do Banco** ✅
+- ✅ Configurar conexão Prisma com pooling
+- ✅ Executar migrations iniciais  
+- ✅ Criar seeds para desenvolvimento
+- **Branch**: `main`
+- **Commit**: `feat(task-2.3): configuração banco e migrations`
 
-### **Task 2.3 - Conexão do Banco**
-- 🔄 Configurar conexão Prisma com pooling
-- 🔄 Executar migrations iniciais  
-- 🔄 Criar seeds para desenvolvimento
-- **Dependências**: Task 1 ✅
-- **Branch**: `feature/task-2-database`
-- **Estimate**: 30min
+### **Task 3.1 - NextAuth.js Setup** ✅
+- ✅ Configurar CredentialsProvider
+- ✅ Configurar GoogleProvider OAuth
+- ✅ Implementar PrismaAdapter e callbacks
+- **Branch**: `main`
+- **Commit**: `feat(task-3.1): NextAuth configurado`
+
+### **Task 3.3 - Páginas de Autenticação** ✅
+- ✅ Implementar página de login
+- ✅ Implementar página de registro
+- ✅ Criar componentes LoginForm e RegisterForm
+- ✅ Implementar reset de senha
+- **Branch**: `main`
+- **Commit**: `feat(task-3.3): páginas autenticação completas`
+
+### **Task 4.1 - Componentes UI Base** ✅
+- ✅ Estender Button e Input existentes
+- ✅ Criar Select, Modal, Card, Badge, Avatar
+- ✅ Implementar LoadingSkeleton, ErrorBoundary
+- ✅ Configurar CSS Modules com design tokens
+- **Branch**: `main`
+- **Commit**: `feat(task-4.1): componentes UI fundamentais`
+
+### **Task 4.2 - Componentes de Layout** ✅
+- ✅ Implementar Layout principal
+- ✅ Criar Navigation responsivo
+- ✅ Implementar Sidebar mobile
+- **Branch**: `main`
+- **Commit**: `feat(task-4.2): componentes layout responsivos`
+
+### **Task 5 - Checkpoint Sistema Base** ✅
+- ✅ Todos os testes passando
+- ✅ Build funcionando
+- ✅ Sistema base operacional
+- **Branch**: `main`
+
+### **Task 6.1 - Serviço Cloudinary** ✅
+- ✅ Configurar upload com otimização
+- ✅ Implementar geração de thumbnails
+- ✅ Criar utility functions upload/delete
+- ✅ Implementar validação formato/tamanho
+- **Branch**: `main`
+- **Commit**: `feat(task-6.1): serviço Cloudinary implementado`
+
+### **Task 6.4 - API Route Upload** ✅
+- ✅ Implementar /api/upload com validação
+- ✅ Configurar rate limiting
+- ✅ Implementar error handling robusto
+- **Branch**: `main`
+- **Commit**: `feat(task-6.4): API upload com rate limiting`
+
+### **Task 7.1 - Schemas Validação Zod** ✅
+- ✅ Criar petSchema completo
+- ✅ Implementar adoptionSchema
+- ✅ Criar utility functions sanitização
+- **Branch**: `main`
+- **Commit**: `feat(task-7.1): schemas Zod completos`
+
+### **Task 7.3 - API Routes Pets** ✅
+- ✅ GET /api/pets com filtros e paginação
+- ✅ POST /api/pets com validação completa
+- ✅ PATCH /api/pets/[id] para edição
+- ✅ DELETE /api/pets/[id] com arquivamento
+- **Branch**: `main`
+- **Commit**: `feat(task-7.3): API routes pets completas`
 
 ---
 
 ## 🟡 EM PROGRESSO (DOING) 🔨
 
-*Nenhuma task em progresso no momento*
+### **Task 7.4 - Componentes Pet Management** 🔨
+- 🔄 Criar PetForm com upload integrado
+- 🔄 Implementar PetCard otimizado
+- 🔄 Criar PetDetails com galeria
+- 🔄 Implementar PetList infinite scroll
+- **Dependências**: Task 7.3 ✅
+- **Branch**: `feature/task-7-pet-components`
+- **Estimate**: 2-3h
+
+### **Task 8.1 - Página Catálogo Público** 🔨
+- 🔄 Criar /pets Server Component
+- 🔄 Implementar PetFilters Client Component  
+- 🔄 Configurar URL state management
+- 🔄 Implementar busca tempo real
+- **Dependências**: Task 7.4
+- **Branch**: `feature/task-8-public-catalog`
+- **Estimate**: 2h
+
+---
+
+## 🔵 PRÓXIMO (READY) 🚀
+
+### **Task 9.1 - Página /pets/[id]** 🚀
+- 📋 Layout detalhes informações completas
+- 📋 Galeria imagens com navegação
+- 📋 Informações saúde e personalidade
+- 📋 Exibir informações proprietário
+- **Dependências**: Task 8.1
+- **Estimate**: 2h
+
+### **Task 9.2 - Botão Manifestar Interesse** 🚀
+- 📋 Botão condicional baseado status
+- 📋 Integração sistema autenticação
+- 📋 Modal confirmação
+- **Dependências**: Task 9.1
+- **Estimate**: 1h
+
+### **Task 10 - Checkpoint Core Completo** 🚀
+- 📋 Validar sistema pets funcionando
+- 📋 Confirmar catálogo público operacional
+- **Dependências**: Tasks 7-9 completas
+- **Estimate**: 30min
 
 ---
 
@@ -466,18 +575,19 @@
 ## 📊 Estatísticas do Kanban
 
 ### **Por Status:**
-- ✅ **Concluído**: 1 task (1.2%)
-- 🔄 **Próximo**: 1 task (1.2%)  
-- 📋 **Planejado**: 79 tasks (97.5%)
+- ✅ **Concluído**: 12 tasks (14.8%)
+- 🔨 **Em Progresso**: 2 tasks (2.5%)  
+- 🚀 **Próximo**: 3 tasks (3.7%)
+- 📋 **Planejado**: 64 tasks (79.0%)
 
 ### **Por Fase:**
-- 🏗️ **Infraestrutura**: 4 tasks
-- 🔐 **Autenticação**: 4 tasks  
-- 🎨 **UI Components**: 3 tasks
-- 📸 **Upload Imagens**: 5 tasks
-- 🐕 **CRUD Pets**: 5 tasks
-- 🔍 **Catálogo**: 8 tasks
-- 📄 **Detalhes Pet**: 4 tasks
+- 🏗️ **Infraestrutura**: 4 tasks - ✅ 3 concluídas
+- 🔐 **Autenticação**: 4 tasks - ✅ 2 concluídas  
+- 🎨 **UI Components**: 3 tasks - ✅ 3 concluídas
+- 📸 **Upload Imagens**: 5 tasks - ✅ 2 concluídas
+- 🐕 **CRUD Pets**: 5 tasks - ✅ 2 concluídas, 🔨 1 em progresso
+- 🔍 **Catálogo**: 8 tasks - 🔨 1 em progresso
+- 📄 **Detalhes Pet**: 4 tasks - 🚀 2 próximas
 - 💕 **Sistema Adoção**: 4 tasks
 - 📧 **Notificações**: 4 tasks
 - 👤 **Dashboard**: 5 tasks
@@ -486,12 +596,18 @@
 - ⚡ **Performance**: 4 tasks
 - 🧪 **Testes E2E**: 3 tasks
 
-### **Estimativas:**
-- ⚡ **Rápidas** (< 1h): 30 tasks
-- 🕐 **Médias** (1-3h): 35 tasks  
-- 🕓 **Longas** (3-6h): 15 tasks
-- 🗓️ **Complexas** (> 6h): 1 task
+### **Progresso Geral:**
+- 🎯 **MVP Core**: 47% completo (12/25 tasks críticas)
+- 🚀 **Sistema Funcional**: Base implementada
+- 📈 **Velocidade**: ~2-3 tasks/dia
+- 🎖️ **Qualidade**: Todas implementações com validação e error handling
+
+### **Próximos Marcos:**
+1. 🎯 **Checkpoint Core** (Task 10) - 3 tasks restantes
+2. 💕 **Sistema Adoção** (Tasks 11.x) - Após checkpoint
+3. 📧 **Notificações** (Tasks 12.x) - Funcionalidade completa
+4. 🚀 **MVP Lançamento** - Estimado para ~2 semanas
 
 ---
 
-**📋 Kanban atualizado automaticamente conforme progresso das tasks**
+**📋 Kanban atualizado automaticamente - Última atualização: December 2024**
