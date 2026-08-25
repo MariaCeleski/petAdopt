@@ -84,7 +84,7 @@ jobs:
     - name: Add to Project Board
       uses: actions/add-to-project@v0.5.0
       with:
-        project-url: https://github.com/users/MariaCeleski/projects/1
+        project-url: https://github.com/users/MariaCeleski/projects/7
         github-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Set Task Status
