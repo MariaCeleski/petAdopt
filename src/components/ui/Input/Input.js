@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef } from 'react';
+import { forwardRef, useId, useEffect, useState } from 'react';
 import styles from './Input.module.css';
 import { clsx } from 'clsx';
 
@@ -9,13 +9,24 @@ const Input = forwardRef(({
   error,
   helperText,
   icon,
+  iconPosition = 'left',
   variant = 'default',
   size = 'medium',
   fullWidth = true,
+  disabled = false,
+  required = false,
+  placeholder,
+  type = 'text',
   className,
   ...props 
 }, ref) => {
-  const inputId = props.id || `input-${Math.random().toString(36).substr(2, 9)}`;
+  const [isHydrated, setIsHydrated] = useState(false);
+  const generatedId = useId();
+  const inputId = props.id || (isHydrated ? generatedId : 'input-ssr');
+
+  useEffect(() => {
+    setIsHydrated(true);
+  }, []);
 
   return (
     <div className={clsx(
@@ -30,26 +41,37 @@ const Input = forwardRef(({
       {label && (
         <label htmlFor={inputId} className={styles.label}>
           {label}
-          {props.required && <span className={styles.required}>*</span>}
+          {required && <span className={styles.required}>*</span>}
         </label>
       )}
       
       <div className={styles.inputWrapper}>
-        {icon && <div className={styles.icon}>{icon}</div>}
+        {icon && iconPosition === 'left' && (
+          <div className={styles.iconLeft}>{icon}</div>
+        )}
         
         <input
           ref={ref}
           id={inputId}
+          type={type}
+          placeholder={placeholder}
+          disabled={disabled}
+          required={required}
           className={clsx(
             styles.input,
             styles[variant],
             styles[size],
             {
-              [styles.withIcon]: icon
+              [styles.withIconLeft]: icon && iconPosition === 'left',
+              [styles.withIconRight]: icon && iconPosition === 'right'
             }
           )}
           {...props}
         />
+        
+        {icon && iconPosition === 'right' && (
+          <div className={styles.iconRight}>{icon}</div>
+        )}
       </div>
       
       {error && <span className={styles.error}>{error}</span>}

@@ -101,9 +101,9 @@
 }
 
 /* Icon Support */
-.icon {
+.iconLeft,
+.iconRight {
   position: absolute;
-  left: var(--space-md);
   color: var(--neutral-medium);
   pointer-events: none;
   z-index: 1;
@@ -111,16 +111,36 @@
   align-items: center;
 }
 
-.withIcon.small {
+.iconLeft {
+  left: var(--space-md);
+}
+
+.iconRight {
+  right: var(--space-md);
+}
+
+.withIconLeft.small {
   padding-left: calc(var(--space-md) + 20px + var(--space-sm));
 }
 
-.withIcon.medium {
+.withIconLeft.medium {
   padding-left: calc(var(--space-lg) + 24px + var(--space-sm));
 }
 
-.withIcon.large {
+.withIconLeft.large {
   padding-left: calc(var(--space-xl) + 28px + var(--space-sm));
+}
+
+.withIconRight.small {
+  padding-right: calc(var(--space-md) + 20px + var(--space-sm));
+}
+
+.withIconRight.medium {
+  padding-right: calc(var(--space-lg) + 24px + var(--space-sm));
+}
+
+.withIconRight.large {
+  padding-right: calc(var(--space-xl) + 28px + var(--space-sm));
 }
 
 /* States */
@@ -133,7 +153,8 @@
   box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
 }
 
-.hasError .icon {
+.hasError .iconLeft,
+.hasError .iconRight {
   color: var(--error);
 }
 

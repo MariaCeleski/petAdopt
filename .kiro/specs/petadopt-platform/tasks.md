@@ -8,15 +8,15 @@ A arquitetura se baseia no App Router do Next.js com Server Components, API Rout
 
 ## Tasks
 
-- [ ] 1. Setup do projeto e configuração base
+- [x] 1. Setup do projeto e configuração base
   - Configurar estrutura inicial do projeto Next.js 16.x
   - Instalar e configurar dependências core (Prisma, NextAuth.js, Cloudinary)
   - Configurar variáveis de ambiente e arquivos de configuração
   - Criar estrutura de diretórios padrão seguindo convenções do App Router
   - _Requirements: Sistema base para todas as funcionalidades_
 
-- [ ] 2. Configuração do banco de dados e modelos
-  - [ ] 2.1 Criar schema Prisma completo
+- [x] 2. Configuração do banco de dados e modelos
+  - [x] 2.1 Criar schema Prisma completo
     - Definir models User, Pet, Adoption, Shelter, Account, Session
     - Configurar enums (UserType, Species, Size, Gender, PetStatus, AdoptionStatus)
     - Implementar relacionamentos e constraints
@@ -27,7 +27,7 @@ A arquitetura se baseia no App Router do Next.js com Server Components, API Rout
     - **Property 2: Pet Mandatory Fields Validation**
     - **Validates: Requirements 2.2**
 
-  - [ ] 2.3 Configurar conexão do banco e migrations
+  - [x] 2.3 Configurar conexão do banco e migrations
     - Configurar Prisma Client com pooling de conexões
     - Executar migrations iniciais
     - Criar seeds para desenvolvimento
@@ -38,8 +38,8 @@ A arquitetura se baseia no App Router do Next.js com Server Components, API Rout
     - Testar constraints de integridade referencial
     - _Requirements: 2.1, 2.7_
 
-- [ ] 3. Sistema de autenticação base
-  - [ ] 3.1 Configurar NextAuth.js com providers
+- [x] 3. Sistema de autenticação base
+  - [x] 3.1 Configurar NextAuth.js com providers
     - Implementar CredentialsProvider com validação de senha
     - Configurar GoogleProvider para OAuth
     - Configurar PrismaAdapter para sessões
@@ -50,7 +50,7 @@ A arquitetura se baseia no App Router do Next.js com Server Components, API Rout
     - **Property 1: Password Strength Validation**
     - **Validates: Requirements 1.4**
 
-  - [ ] 3.3 Criar páginas de autenticação
+  - [x] 3.3 Criar páginas de autenticação
     - Implementar página de login com form validation
     - Implementar página de registro com verificação de email
     - Criar componentes LoginForm e RegisterForm
@@ -63,15 +63,15 @@ A arquitetura se baseia no App Router do Next.js com Server Components, API Rout
     - Testar OAuth com Google
     - _Requirements: 1.1, 1.2, 1.5_
 
-- [ ] 4. Componentes base do design system
-  - [ ] 4.1 Implementar componentes UI fundamentais
+- [x] 4. Componentes base do design system
+  - [x] 4.1 Implementar componentes UI fundamentais
     - Estender componentes Button e Input existentes
     - Criar componentes Select, Modal, Card, Badge, Avatar
     - Implementar LoadingSkeleton e ErrorBoundary
     - Configurar CSS Modules com design tokens
     - _Requirements: 9.1, 9.2, 9.4, 9.6_
 
-  - [ ] 4.2 Criar componentes de layout
+  - [x] 4.2 Criar componentes de layout
     - Implementar Layout principal com Header/Footer existentes
     - Criar componente Navigation responsivo
     - Implementar Sidebar para mobile
@@ -83,11 +83,11 @@ A arquitetura se baseia no App Router do Next.js com Server Components, API Rout
     - Testar screen readers
     - _Requirements: 9.6_
 
-- [ ] 5. Checkpoint - Sistema base funcional
+- [x] 5. Checkpoint - Sistema base funcional
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 6. Sistema de upload de imagens
-  - [ ] 6.1 Implementar serviço Cloudinary
+- [x] 6. Sistema de upload de imagens
+  - [x] 6.1 Implementar serviço Cloudinary
     - Configurar upload com otimização automática
     - Implementar geração de thumbnails e avatars
     - Criar utility functions para upload e delete
@@ -102,7 +102,7 @@ A arquitetura se baseia no App Router do Next.js com Server Components, API Rout
     - **Property 5: Image Size Validation**
     - **Validates: Requirements 3.3**
 
-  - [ ] 6.4 Criar API route para upload
+  - [x] 6.4 Criar API route para upload
     - Implementar /api/upload com validação
     - Configurar rate limiting para uploads
     - Implementar error handling robusto
@@ -115,7 +115,7 @@ A arquitetura se baseia no App Router do Next.js com Server Components, API Rout
     - _Requirements: 3.2, 3.3, 3.7_
 
 - [ ] 7. CRUD de pets e validação
-  - [ ] 7.1 Implementar schemas de validação Zod
+  - [x] 7.1 Implementar schemas de validação Zod
     - Criar petSchema com todas as validações
     - Implementar adoptionSchema com validação de formulário
     - Criar utility functions para sanitização

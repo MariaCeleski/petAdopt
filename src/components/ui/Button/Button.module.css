@@ -136,12 +136,50 @@
   width: 100%;
 }
 
+.rounded {
+  border-radius: var(--radius-full);
+}
+
+.iconOnly {
+  padding: var(--space-md);
+  aspect-ratio: 1;
+  min-width: auto;
+}
+
+.iconOnly.small {
+  padding: var(--space-sm);
+  min-height: 36px;
+}
+
+.iconOnly.large {
+  padding: var(--space-lg);
+  min-height: 52px;
+}
+
 .loading {
   color: transparent !important;
 }
 
 .loadingText {
   opacity: 0;
+}
+
+.iconLeft {
+  display: flex;
+  align-items: center;
+  margin-right: var(--space-xs);
+}
+
+.iconRight {
+  display: flex;
+  align-items: center;
+  margin-left: var(--space-xs);
+}
+
+/* Icon-only buttons */
+.iconOnly .iconLeft,
+.iconOnly .iconRight {
+  margin: 0;
 }
 
 /* Spinner */

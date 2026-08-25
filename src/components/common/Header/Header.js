@@ -2,20 +2,60 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { signOut } from 'next-auth/react';
 import Button from '@/components/ui/Button';
+import Avatar from '@/components/ui/Avatar';
 import styles from './Header.module.css';
 
-export default function Header() {
+export default function Header({ 
+  session, 
+  onToggleSidebar, 
+  isSidebarOpen = false 
+}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const router = useRouter();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const toggleUserMenu = () => {
+    setIsUserMenuOpen(!isUserMenuOpen);
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await signOut({ callbackUrl: '/' });
+    } catch (error) {
+      console.error('Erro ao fazer logout:', error);
+    }
+  };
+
+  const handleSidebarToggle = () => {
+    if (onToggleSidebar) {
+      onToggleSidebar();
+    }
   };
 
   return (
     <header className={styles.header}>
       <div className="container">
         <div className={styles.headerContent}>
+          {/* Mobile Sidebar Button */}
+          <button 
+            className={styles.sidebarBtn}
+            onClick={handleSidebarToggle}
+            aria-label={isSidebarOpen ? "Fechar menu lateral" : "Abrir menu lateral"}
+          >
+            <span className={`${styles.hamburger} ${isSidebarOpen ? styles.open : ''}`}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </button>
+
           {/* Logo */}
           <Link href="/" className={styles.logo}>
             <span className={styles.logoEmoji}>🐾</span>
@@ -27,9 +67,11 @@ export default function Header() {
             <Link href="/pets" className={styles.navLink}>
               Adotar Pet
             </Link>
-            <Link href="/cadastrar" className={styles.navLink}>
-              Cadastrar Pet
-            </Link>
+            {session?.user && (
+              <Link href="/dashboard/pets/novo" className={styles.navLink}>
+                Cadastrar Pet
+              </Link>
+            )}
             <Link href="/sobre" className={styles.navLink}>
               Sobre Nós
             </Link>
@@ -40,17 +82,78 @@ export default function Header() {
 
           {/* Actions */}
           <div className={styles.actions}>
-            <Button variant="ghost" size="medium" className={styles.loginBtn}>
-              Entrar
-            </Button>
-            <Button variant="primary" size="medium">
-              Cadastrar
-            </Button>
+            {!session?.user ? (
+              <>
+                <Button 
+                  variant="ghost" 
+                  size="medium" 
+                  className={styles.loginBtn}
+                  onClick={() => router.push('/auth/signin')}
+                >
+                  Entrar
+                </Button>
+                <Button 
+                  variant="primary" 
+                  size="medium"
+                  onClick={() => router.push('/auth/signup')}
+                >
+                  Cadastrar
+                </Button>
+              </>
+            ) : (
+              <div className={styles.userArea}>
+                <Link href="/dashboard" className={styles.dashboardLink}>
+                  📊 Dashboard
+                </Link>
+                
+                <div className={styles.userMenu}>
+                  <button 
+                    className={styles.userButton}
+                    onClick={toggleUserMenu}
+                    aria-haspopup="true"
+                    aria-expanded={isUserMenuOpen}
+                  >
+                    <Avatar 
+                      src={session.user.image}
+                      alt={session.user.name}
+                      size="small"
+                    />
+                    <span className={styles.userName}>{session.user.name}</span>
+                    <span className={`${styles.dropdownIcon} ${isUserMenuOpen ? styles.open : ''}`}>
+                      ▼
+                    </span>
+                  </button>
+
+                  {/* Dropdown Menu */}
+                  <div className={`${styles.dropdownMenu} ${isUserMenuOpen ? styles.open : ''}`}>
+                    <Link href="/dashboard/perfil" className={styles.dropdownItem}>
+                      👤 Meu Perfil
+                    </Link>
+                    <Link href="/dashboard/pets" className={styles.dropdownItem}>
+                      🐾 Meus Pets
+                    </Link>
+                    <Link href="/dashboard/adocoes" className={styles.dropdownItem}>
+                      💕 Adoções
+                    </Link>
+                    <Link href="/dashboard/configuracoes" className={styles.dropdownItem}>
+                      ⚙️ Configurações
+                    </Link>
+                    <hr className={styles.dropdownDivider} />
+                    <button 
+                      className={styles.signOutBtn}
+                      onClick={handleSignOut}
+                    >
+                      🚪 Sair
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Legacy Mobile Menu Button (hidden - replaced by sidebar) */}
           <button 
-            className={styles.mobileMenuBtn}
+            className={`${styles.mobileMenuBtn} ${styles.hidden}`}
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
@@ -62,8 +165,8 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
-        <div className={`${styles.mobileMenu} ${isMenuOpen ? styles.open : ''}`}>
+        {/* Legacy Mobile Menu (hidden - replaced by sidebar) */}
+        <div className={`${styles.mobileMenu} ${styles.hidden} ${isMenuOpen ? styles.open : ''}`}>
           <nav className={styles.mobileNav}>
             <Link href="/pets" className={styles.mobileNavLink}>
               🐕 Adotar Pet
@@ -88,6 +191,14 @@ export default function Header() {
           </nav>
         </div>
       </div>
+
+      {/* Overlay para fechar dropdown */}
+      {isUserMenuOpen && (
+        <div 
+          className={styles.overlay}
+          onClick={() => setIsUserMenuOpen(false)}
+        />
+      )}
     </header>
   );
 }

@@ -1,98 +1,101 @@
+import Layout from '@/components/common/Layout';
 import Button from '@/components/ui/Button';
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-neutral-lighter">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary-orange to-primary-blue text-white py-20">
-        <div className="container">
-          <div className="max-w-4xl mx-auto text-center animate-slideUp">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-primary mb-6 text-white">
-              Encontre seu 
-              <span className="text-secondary-yellow"> Companheiro</span> 
-              <br />
-              Perfeito 🐾
-            </h1>
-            
-            <p className="text-lg md:text-xl mb-8 text-white/90 max-w-2xl mx-auto">
-              Conectamos corações. Milhares de cães e gatos estão esperando por uma família amorosa. 
-              Que tal ser você a fazer a diferença na vida de um pet?
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button size="large" variant="success" className="shadow-xl">
-                🐕 Adotar um Pet
-              </Button>
-              <Button size="large" variant="outline" className="border-white text-white hover:bg-white hover:text-primary-orange">
-                💝 Cadastrar Pet
-              </Button>
+    <Layout showNavigation={false}>
+      <div className="min-h-screen bg-neutral-lighter">
+        {/* Hero Section */}
+        <section className="bg-gradient-to-br from-primary-orange to-primary-blue text-white py-20">
+          <div className="container">
+            <div className="max-w-4xl mx-auto text-center animate-slideUp">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-primary mb-6 text-white">
+                Encontre seu 
+                <span className="text-secondary-yellow"> Companheiro</span> 
+                <br />
+                Perfeito 🐾
+              </h1>
+              
+              <p className="text-lg md:text-xl mb-8 text-white/90 max-w-2xl mx-auto">
+                Conectamos corações. Milhares de cães e gatos estão esperando por uma família amorosa. 
+                Que tal ser você a fazer a diferença na vida de um pet?
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Button size="large" variant="success" className="shadow-xl">
+                  🐕 Adotar um Pet
+                </Button>
+                <Button size="large" variant="outline" className="border-white text-white hover:bg-white hover:text-primary-orange">
+                  💝 Cadastrar Pet
+                </Button>
+              </div>
+              
+              {/* Estatísticas */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 pt-12 border-t border-white/20">
+                <div className="text-center">
+                  <div className="text-3xl font-bold font-primary text-secondary-yellow">2.847</div>
+                  <div className="text-sm text-white/80">Pets Adotados</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold font-primary text-secondary-yellow">156</div>
+                  <div className="text-sm text-white/80">Famílias Felizes</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold font-primary text-secondary-yellow">89</div>
+                  <div className="text-sm text-white/80">Pets Disponíveis</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Pets em Destaque */}
+        <section className="py-16 bg-white">
+          <div className="container">
+            <div className="text-center mb-12 animate-fadeIn">
+              <h2 className="text-3xl md:text-4xl font-primary font-semibold text-neutral-dark mb-4">
+                Pets Esperando por 
+                <span className="text-primary-orange"> Você</span>
+              </h2>
+              <p className="text-lg text-neutral-medium max-w-2xl mx-auto">
+                Conheça alguns dos nossos amigos peludos que estão prontos para encher sua casa de amor e alegria.
+              </p>
             </div>
             
-            {/* Estatísticas */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 pt-12 border-t border-white/20">
-              <div className="text-center">
-                <div className="text-3xl font-bold font-primary text-secondary-yellow">2.847</div>
-                <div className="text-sm text-white/80">Pets Adotados</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold font-primary text-secondary-yellow">156</div>
-                <div className="text-sm text-white/80">Famílias Felizes</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold font-primary text-secondary-yellow">89</div>
-                <div className="text-sm text-white/80">Pets Disponíveis</div>
-              </div>
+            {/* Grid de Pets Mockados */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+              {mockPets.map((pet, index) => (
+                <PetCard key={index} pet={pet} />
+              ))}
+            </div>
+            
+            <div className="text-center">
+              <Button size="large" variant="primary">
+                Ver Todos os Pets Disponíveis
+              </Button>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Pets em Destaque */}
-      <section className="py-16 bg-white">
-        <div className="container">
-          <div className="text-center mb-12 animate-fadeIn">
-            <h2 className="text-3xl md:text-4xl font-primary font-semibold text-neutral-dark mb-4">
-              Pets Esperando por 
-              <span className="text-primary-orange"> Você</span>
-            </h2>
-            <p className="text-lg text-neutral-medium max-w-2xl mx-auto">
-              Conheça alguns dos nossos amigos peludos que estão prontos para encher sua casa de amor e alegria.
-            </p>
+        {/* Call to Action */}
+        <section className="py-16 bg-primary-green text-white">
+          <div className="container">
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="text-3xl md:text-4xl font-primary font-semibold mb-6">
+                Pronto para Mudar uma Vida? 💚
+              </h2>
+              <p className="text-lg mb-8 text-white/90">
+                O processo de adoção é simples, seguro e pensado no bem-estar dos animais. 
+                Cadastre-se e comece sua jornada como tutor responsável hoje mesmo.
+              </p>
+              <Button size="large" variant="outline" className="border-white text-white hover:bg-white hover:text-primary-green">
+                Começar Processo de Adoção
+              </Button>
+            </div>
           </div>
-          
-          {/* Grid de Pets Mockados */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {mockPets.map((pet, index) => (
-              <PetCard key={index} pet={pet} />
-            ))}
-          </div>
-          
-          <div className="text-center">
-            <Button size="large" variant="primary">
-              Ver Todos os Pets Disponíveis
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="py-16 bg-primary-green text-white">
-        <div className="container">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-primary font-semibold mb-6">
-              Pronto para Mudar uma Vida? 💚
-            </h2>
-            <p className="text-lg mb-8 text-white/90">
-              O processo de adoção é simples, seguro e pensado no bem-estar dos animais. 
-              Cadastre-se e comece sua jornada como tutor responsável hoje mesmo.
-            </p>
-            <Button size="large" variant="outline" className="border-white text-white hover:bg-white hover:text-primary-green">
-              Começar Processo de Adoção
-            </Button>
-          </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </Layout>
   );
 }
 

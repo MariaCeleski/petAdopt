@@ -1,6 +1,7 @@
 import { Inter, Poppins } from 'next/font/google';
-import Header from '@/components/common/Header';
-import Footer from '@/components/common/Footer';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
+import AuthProvider from '@/components/auth/AuthProvider';
 import './globals.css';
 
 const inter = Inter({
@@ -33,15 +34,16 @@ export const metadata = {
   }
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  // Obter sessão no servidor para hidratação
+  const session = await getServerSession(authOptions);
+
   return (
     <html lang="pt-BR" className={`${inter.variable} ${poppins.variable}`}>
       <body className={`${inter.className} min-h-screen flex flex-col`}>
-        <Header />
-        <main className="flex-1">
+        <AuthProvider session={session}>
           {children}
-        </main>
-        <Footer />
+        </AuthProvider>
       </body>
     </html>
   );

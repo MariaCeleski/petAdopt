@@ -10,14 +10,23 @@ export default function Button({
   disabled = false,
   loading = false,
   fullWidth = false,
+  rounded = false,
+  icon,
+  iconPosition = 'left',
   onClick,
   type = 'button',
   className,
+  as = 'button',
+  href,
   ...props 
 }) {
+  const Component = as === 'link' ? 'a' : 'button';
+  const componentProps = as === 'link' 
+    ? { href, ...props } 
+    : { type, disabled: disabled || loading, ...props };
+
   return (
-    <button
-      type={type}
+    <Component
       className={clsx(
         styles.button,
         styles[variant],
@@ -25,20 +34,30 @@ export default function Button({
         {
           [styles.disabled]: disabled,
           [styles.loading]: loading,
-          [styles.fullWidth]: fullWidth
+          [styles.fullWidth]: fullWidth,
+          [styles.rounded]: rounded,
+          [styles.iconOnly]: !children && icon
         },
         className
       )}
-      disabled={disabled || loading}
       onClick={onClick}
-      {...props}
+      {...componentProps}
     >
       {loading && (
         <span className={styles.spinner} />
       )}
+      
+      {!loading && icon && iconPosition === 'left' && (
+        <span className={styles.iconLeft}>{icon}</span>
+      )}
+      
       <span className={loading ? styles.loadingText : ''}>
         {children}
       </span>
-    </button>
+      
+      {!loading && icon && iconPosition === 'right' && (
+        <span className={styles.iconRight}>{icon}</span>
+      )}
+    </Component>
   );
 }

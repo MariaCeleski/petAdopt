@@ -16,6 +16,32 @@
   min-height: 64px;
 }
 
+/* Sidebar Button (mobile) */
+.sidebarBtn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px; /* Increased for touch */
+  height: 44px; /* Increased for touch */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-right: var(--space-md);
+  border-radius: var(--radius-sm);
+  transition: background-color 0.2s ease;
+  touch-action: manipulation; /* Optimize for touch */
+}
+
+.sidebarBtn:hover {
+  background: rgba(255, 140, 66, 0.1);
+}
+
+.sidebarBtn:active {
+  background: rgba(255, 140, 66, 0.2);
+}
+
 /* Logo */
 .logo {
   display: flex;
@@ -90,6 +116,157 @@
 
 .loginBtn {
   color: var(--neutral-dark) !important;
+}
+
+/* User Area (authenticated) */
+.userArea {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.dashboardLink {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  text-decoration: none;
+  color: var(--neutral-dark);
+  font-weight: var(--font-medium);
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+}
+
+.dashboardLink:hover {
+  background: rgba(255, 140, 66, 0.1);
+  color: var(--primary-orange);
+}
+
+/* User Menu */
+.userMenu {
+  position: relative;
+}
+
+.userButton {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm);
+  background: none;
+  border: 1px solid var(--neutral-light);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 44px; /* Touch-friendly minimum size */
+  touch-action: manipulation; /* Optimize for touch */
+}
+
+.userButton:hover {
+  border-color: var(--primary-orange);
+  background: rgba(255, 140, 66, 0.05);
+}
+
+.userName {
+  font-weight: var(--font-medium);
+  color: var(--neutral-dark);
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropdownIcon {
+  font-size: var(--text-xs);
+  color: var(--neutral-medium);
+  transition: transform 0.2s ease;
+}
+
+.dropdownIcon.open {
+  transform: rotate(180deg);
+}
+
+/* Dropdown Menu */
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + var(--space-sm));
+  right: 0;
+  width: 220px;
+  background: var(--neutral-white);
+  border: 1px solid var(--neutral-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  z-index: 1100;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+
+.dropdownMenu.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  text-decoration: none;
+  color: var(--neutral-dark);
+  font-weight: var(--font-medium);
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  min-height: 48px; /* Touch-friendly minimum size */
+  touch-action: manipulation; /* Optimize for touch */
+}
+
+.dropdownItem:hover {
+  background: var(--neutral-lighter);
+  color: var(--primary-orange);
+}
+
+.dropdownItem:last-child {
+  border-bottom: none;
+}
+
+.dropdownDivider {
+  margin: 0;
+  border: none;
+  border-top: 1px solid var(--neutral-light);
+}
+
+.signOutBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: none;
+  border: none;
+  color: var(--error);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: var(--text-base);
+  min-height: 48px; /* Touch-friendly minimum size */
+  touch-action: manipulation; /* Optimize for touch */
+}
+
+.signOutBtn:hover {
+  background: rgba(231, 76, 60, 0.1);
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1050;
 }
 
 /* Mobile Menu Button */
@@ -200,6 +377,11 @@
   border-top: 1px solid var(--neutral-light);
 }
 
+/* Hidden class para legacy components */
+.hidden {
+  display: none !important;
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
   .nav,
@@ -207,13 +389,26 @@
     display: none;
   }
 
-  .mobileMenuBtn,
-  .mobileMenu {
-    display: block;
+  .sidebarBtn {
+    display: flex;
   }
 
-  .mobileMenu {
-    display: block;
+  .userArea .dashboardLink {
+    display: none; /* Ocultar dashboard link no mobile */
+  }
+
+  .userArea .userMenu {
+    margin-right: var(--space-sm);
+  }
+
+  /* Simplificar user button no mobile */
+  .userName {
+    display: none;
+  }
+
+  .userButton {
+    padding: var(--space-sm);
+    min-width: 40px;
   }
 }
 
@@ -228,5 +423,42 @@
 
   .logoEmoji {
     font-size: var(--text-xl);
+  }
+
+  .dropdownMenu {
+    width: 200px;
+  }
+}
+
+/* Estados de foco */
+.sidebarBtn:focus-visible,
+.userButton:focus-visible,
+.dropdownItem:focus-visible,
+.signOutBtn:focus-visible {
+  outline: 2px solid var(--primary-blue);
+  outline-offset: 2px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .userButton {
+    border-width: 2px;
+  }
+  
+  .dropdownMenu {
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hamburger,
+  .hamburger span,
+  .dropdownIcon,
+  .dropdownMenu,
+  .userButton,
+  .dropdownItem,
+  .signOutBtn {
+    transition: none;
   }
 }
