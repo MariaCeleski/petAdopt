@@ -113,6 +113,10 @@
   align-items: center;
 }
 
+.iconRight button {
+  pointer-events: auto;
+}
+
 .iconLeft {
   left: var(--space-md);
 }
