@@ -284,8 +284,8 @@ export default function FAQPage() {
 
       {/* Page Navigation */}
       <PageNavigation 
-        previousPage={{ label: '← Como Adotar', href: '/processo-adocao' }}
-        nextPage={{ label: 'Sobre Nós →', href: '/sobre' }}
+        previousPage={{ label: 'Contato', href: '/contato' }}
+        nextPage={{ label: 'Como Adotar', href: '/processo-adocao' }}
       />
     </Layout>
   );

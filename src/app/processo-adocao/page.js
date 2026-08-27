@@ -319,8 +319,8 @@ export default function ProcessoAdocaoPage() {
 
       {/* Page Navigation */}
       <PageNavigation 
-        previousPage={{ label: '← Voltar para Pets', href: '/pets' }}
-        nextPage={{ label: 'FAQ →', href: '/faq' }}
+        previousPage={{ label: 'Adotar um Pet', href: '/pets' }}
+        nextPage={{ label: 'FAQ', href: '/faq' }}
       />
     </Layout>
   );

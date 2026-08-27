@@ -311,8 +311,8 @@ export default function ContatoPage() {
 
       {/* Page Navigation */}
       <PageNavigation 
-        previousPage={{ label: '← Sobre Nós', href: '/sobre' }}
-        nextPage={{ label: 'Termos →', href: '/termos' }}
+        previousPage={{ label: 'Sobre Nós', href: '/sobre' }}
+        nextPage={{ label: 'Termos de Serviço', href: '/termos' }}
       />
     </Layout>
   );

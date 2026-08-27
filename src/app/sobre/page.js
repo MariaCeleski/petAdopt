@@ -253,8 +253,8 @@ export default function SobrePage() {
 
       {/* Page Navigation */}
       <PageNavigation 
-        previousPage={{ label: '← FAQ', href: '/faq' }}
-        nextPage={{ label: 'Contato →', href: '/contato' }}
+        previousPage={{ label: 'FAQ', href: '/faq' }}
+        nextPage={{ label: 'Contato', href: '/contato' }}
       />
     </Layout>
   );
