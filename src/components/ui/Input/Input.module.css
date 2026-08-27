@@ -36,6 +36,8 @@
   outline: none;
   background: var(--neutral-white);
   color: var(--neutral-dark);
+  display: flex;
+  align-items: center;
 }
 
 .input:focus {
