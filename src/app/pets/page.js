@@ -1,5 +1,6 @@
 import { fetchPets, getPetStats } from "@/lib/pets";
 import { PublicPetCatalog } from "./PublicPetCatalog";
+import styles from './pets.module.css';
 
 /**
  * Public Pet Catalog Page - Server Component
@@ -111,37 +112,46 @@ export default async function PetsPage({ searchParams = {} }) {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary-600 to-primary-700 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Encontre seu companheiro perfeito
+      <section className={styles.heroSection}>
+        <div className={styles.heroContainer}>
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>
+              Encontre seu 
+              <span className={styles.highlight}> Companheiro</span> 
+              <br />
+              Perfeito 🐾
             </h1>
-            <p className="text-xl md:text-2xl text-primary-100 mb-6">
+            
+            <p className={styles.heroDescription}>
               {stats.totalAvailable > 0
-                ? `${stats.totalAvailable} pet${stats.totalAvailable !== 1 ? "s" : ""} esperando por um novo lar`
-                : "Pets esperando por um novo lar"}
+                ? `${stats.totalAvailable} pet${stats.totalAvailable !== 1 ? "s" : ""} esperando por um novo lar. Qual será o seu?`
+                : "Pets esperando por um novo lar. Qual será o seu?"}
             </p>
 
             {/* Quick Stats */}
-            {(stats.bySpecies.DOG || stats.bySpecies.CAT) && (
-              <div className="flex justify-center gap-8 text-center">
+            {(stats.bySpecies?.DOG || stats.bySpecies?.CAT) && (
+              <div className={styles.statsContainer}>
                 {stats.bySpecies.DOG && (
-                  <div>
-                    <div className="text-3xl font-bold">
-                      {stats.bySpecies.DOG}
-                    </div>
-                    <div className="text-primary-200">Cachorros</div>
+                  <div className={styles.statCard}>
+                    <span className={styles.statIcon}>🐕</span>
+                    <span className={styles.statNumber}>{stats.bySpecies.DOG}</span>
+                    <span className={styles.statLabel}>Cachorros Disponíveis</span>
                   </div>
                 )}
                 {stats.bySpecies.CAT && (
-                  <div>
-                    <div className="text-3xl font-bold">
-                      {stats.bySpecies.CAT}
-                    </div>
-                    <div className="text-primary-200">Gatos</div>
+                  <div className={styles.statCard}>
+                    <span className={styles.statIcon}>🐱</span>
+                    <span className={styles.statNumber}>{stats.bySpecies.CAT}</span>
+                    <span className={styles.statLabel}>Gatos Disponíveis</span>
+                  </div>
+                )}
+                {stats.totalAvailable && (
+                  <div className={styles.statCard}>
+                    <span className={styles.statIcon}>💚</span>
+                    <span className={styles.statNumber}>{stats.totalAvailable}</span>
+                    <span className={styles.statLabel}>Vidas para Mudar</span>
                   </div>
                 )}
               </div>
@@ -151,13 +161,15 @@ export default async function PetsPage({ searchParams = {} }) {
       </section>
 
       {/* Main Catalog Content */}
-      <main className="container mx-auto px-4 py-8">
-        <PublicPetCatalog
-          initialPets={petsData.pets}
-          initialPagination={petsData.pagination}
-          initialFilters={filters}
-          stats={stats}
-        />
+      <main className={styles.mainContent}>
+        <div className={styles.mainContainer}>
+          <PublicPetCatalog
+            initialPets={petsData.pets}
+            initialPagination={petsData.pagination}
+            initialFilters={filters}
+            stats={stats}
+          />
+        </div>
       </main>
     </div>
   );

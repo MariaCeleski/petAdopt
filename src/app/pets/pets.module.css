@@ -1,0 +1,159 @@
+/* Pets Page Styles */
+
+.heroSection {
+  background: linear-gradient(135deg, #FF8C42 0%, #4A90E2 100%);
+  color: white;
+  padding: 5rem 1.5rem;
+}
+
+.heroContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.heroContent {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.heroTitle .highlight {
+  color: #F7DC6F;
+  display: inline;
+}
+
+.heroDescription {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  opacity: 0.95;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0;
+}
+
+/* Stats Container */
+.statsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.statCard {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.statCard:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-4px);
+}
+
+.statIcon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.statNumber {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.statLabel {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* Main Content Section */
+.mainContent {
+  background: white;
+  padding: 2rem 1.5rem;
+}
+
+.mainContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 3rem 1rem;
+  }
+
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .heroDescription {
+    font-size: 1rem;
+  }
+
+  .statsContainer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .statCard {
+    padding: 1rem;
+  }
+
+  .statIcon {
+    font-size: 2rem;
+  }
+
+  .statNumber {
+    font-size: 1.5rem;
+  }
+
+  .mainContent {
+    padding: 1.5rem 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .heroSection {
+    padding: 2rem 1rem;
+  }
+
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .heroDescription {
+    font-size: 0.95rem;
+  }
+
+  .statsContainer {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .statCard {
+    padding: 1rem;
+  }
+
+  .statIcon {
+    font-size: 1.75rem;
+  }
+
+  .statNumber {
+    font-size: 1.25rem;
+  }
+}
