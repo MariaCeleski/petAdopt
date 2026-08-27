@@ -19,6 +19,7 @@ export default function SignUpForm() {
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [passwordStrength, setPasswordStrength] = useState(0);
+  const [successMessage, setSuccessMessage] = useState('');
   const router = useRouter();
 
   const handleChange = (e) => {
@@ -120,8 +121,19 @@ export default function SignUpForm() {
         return;
       }
 
-      // Sucesso - redirecionar para página de verificação
-      router.push(`/auth/verify-request?email=${encodeURIComponent(formData.email)}`);
+      // ✅ Sucesso! Mostrar mensagem e redirecionar
+      console.log('✅ Cadastro bem-sucedido:', result.user);
+      
+      // Mostrar mensagem de sucesso na UI
+      setSuccessMessage(`🎉 Bem-vindo, ${result.user.name}! Sua conta foi criada com sucesso!`);
+      
+      // Mostrar alerta também
+      alert(`✅ Conta criada com sucesso!\n\nBem-vindo, ${result.user.name}!\n\nVocê será redirecionado para verificar seu email.`);
+      
+      // Redirecionar após 2 segundos
+      setTimeout(() => {
+        router.push(`/auth/verify-request?email=${encodeURIComponent(formData.email)}`);
+      }, 2000);
 
     } catch (error) {
       console.error('Registration error:', error);
@@ -168,6 +180,18 @@ export default function SignUpForm() {
 
   return (
     <div className="w-full max-w-md space-y-6">
+      {successMessage && (
+        <div className="bg-green-50 border border-green-200 rounded-md p-4">
+          <div className="flex gap-3">
+            <span className="text-2xl">✅</span>
+            <div>
+              <p className="font-semibold text-green-800">{successMessage}</p>
+              <p className="text-sm text-green-700 mt-1">Você será redirecionado em instantes...</p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {errors.general && (
         <div className="bg-red-50 border border-red-200 rounded-md p-4">
           <p className="text-sm text-red-800">{errors.general}</p>

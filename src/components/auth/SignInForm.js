@@ -77,6 +77,9 @@ export default function SignInForm({ callbackUrl = '/dashboard', error, message 
           general: errorMessages[result.error] || errorMessages.Default 
         });
       } else if (result?.ok) {
+        // ✅ Login bem-sucedido!
+        console.log('✅ Login bem-sucedido para:', formData.email);
+        alert(`✅ Login realizado com sucesso!\n\nBem-vindo de volta!`);
         router.push(callbackUrl);
         router.refresh();
       }
