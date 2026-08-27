@@ -206,11 +206,11 @@
   }
   
   .link {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--primary-orange);
   }
   
   .link:hover {
-    color: var(--primary-orange);
+    color: var(--primary-orange-hover);
     background: rgba(255, 140, 66, 0.2);
   }
   
