@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Layout from '@/components/common/Layout';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
+import styles from './contato.module.css';
 
 export default function ContatoPage() {
   const [formData, setFormData] = useState({
@@ -45,116 +46,138 @@ export default function ContatoPage() {
       title="Entre em Contato" 
       breadcrumbs={breadcrumbs}
       showBreadcrumbs={true}
+      showNavigation={false}
     >
-      <div className="py-16 bg-neutral-lighter">
-        <div className="container max-w-4xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Informações de Contato */}
-            <div className="space-y-8">
-              <div className="bg-white rounded-xl p-6 shadow-md">
-                <h3 className="text-xl font-primary font-semibold text-neutral-dark mb-4">
-                  📞 Fale Conosco
-                </h3>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <span className="text-2xl">📧</span>
-                    <div>
-                      <p className="font-medium text-neutral-dark">Email</p>
-                      <p className="text-neutral-medium">contato@petadopt.com</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-2xl">📱</span>
-                    <div>
-                      <p className="font-medium text-neutral-dark">WhatsApp</p>
-                      <p className="text-neutral-medium">(11) 99999-9999</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-2xl">🕒</span>
-                    <div>
-                      <p className="font-medium text-neutral-dark">Horário de Atendimento</p>
-                      <p className="text-neutral-medium">Segunda à Sexta, 8h às 18h</p>
-                    </div>
-                  </div>
+      {/* Hero Section */}
+      <section className={styles.heroSection}>
+        <div className={styles.heroContainer}>
+          <h1 className={styles.heroTitle}>
+            Vamos Conversar? 💬
+          </h1>
+          <p className={styles.heroDescription}>
+            Tem dúvidas sobre adoção, quer cadastrar um pet ou sugerir melhorias? 
+            Estamos aqui para ouvir você. Entre em contato e vamos juntos fazer a diferença! 🐾
+          </p>
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <section className={styles.mainContent}>
+        <div className={styles.mainContainer}>
+          <div className={styles.contentGrid}>
+            {/* Contact Info */}
+            <div className={styles.contactInfoSection}>
+              <div className={`${styles.contactCard} ${styles.email}`}>
+                <div className={styles.contactIcon}>📧</div>
+                <div className={styles.contactContent}>
+                  <p className={styles.contactLabel}>Email</p>
+                  <p className={styles.contactValue}>contato@petadopt.com</p>
                 </div>
               </div>
 
-              <div className="bg-primary-orange/10 rounded-xl p-6">
-                <h3 className="text-xl font-primary font-semibold text-neutral-dark mb-4">
-                  💡 Dicas Importantes
-                </h3>
-                <ul className="space-y-2 text-sm text-neutral-medium">
-                  <li>• Seja específico sobre o tipo de pet que busca</li>
-                  <li>• Mencione se tem experiência com animais</li>
-                  <li>• Informe o espaço disponível em sua casa</li>
-                  <li>• Conte sobre sua rotina diária</li>
+              <div className={`${styles.contactCard} ${styles.whatsapp}`}>
+                <div className={styles.contactIcon}>💬</div>
+                <div className={styles.contactContent}>
+                  <p className={styles.contactLabel}>WhatsApp</p>
+                  <p className={styles.contactValue}>(11) 99999-9999</p>
+                </div>
+              </div>
+
+              <div className={`${styles.contactCard} ${styles.schedule}`}>
+                <div className={styles.contactIcon}>🕒</div>
+                <div className={styles.contactContent}>
+                  <p className={styles.contactLabel}>Horário de Atendimento</p>
+                  <p className={styles.contactValue}>Segunda à Sexta, 8h às 18h</p>
+                </div>
+              </div>
+
+              {/* Tips Section */}
+              <div className={styles.tipsSection}>
+                <h3 className={styles.tipsSectionTitle}>💡 Dicas Importantes</h3>
+                <ul className={styles.tipsList}>
+                  <li className={styles.tipItem}>Seja específico sobre o tipo de pet que busca</li>
+                  <li className={styles.tipItem}>Mencione se tem experiência com animais</li>
+                  <li className={styles.tipItem}>Informe o espaço disponível em sua casa</li>
+                  <li className={styles.tipItem}>Conte sobre sua rotina diária</li>
                 </ul>
               </div>
             </div>
 
-            {/* Formulário */}
-            <div className="bg-white rounded-xl p-8 shadow-md">
-              <h3 className="text-2xl font-primary font-semibold text-neutral-dark mb-6">
-                Envie sua Mensagem
-              </h3>
+            {/* Form Section */}
+            <div className={styles.formSection}>
+              <h2 className={styles.formTitle}>📝 Envie sua Mensagem</h2>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <Input
-                  label="Nome Completo"
-                  name="nome"
-                  type="text"
-                  value={formData.nome}
-                  onChange={handleChange}
-                  placeholder="Como podemos te chamar?"
-                  required
-                  icon="👤"
-                />
+              <form onSubmit={handleSubmit}>
+                <div className={styles.formGroup}>
+                  <label className={styles.formLabel}>
+                    Nome Completo <span className={styles.required}>*</span>
+                  </label>
+                  <input
+                    className={styles.formInput}
+                    type="text"
+                    name="nome"
+                    value={formData.nome}
+                    onChange={handleChange}
+                    placeholder="Como podemos te chamar?"
+                    required
+                  />
+                </div>
 
-                <Input
-                  label="E-mail"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="seu@email.com"
-                  required
-                  icon="📧"
-                />
+                <div className={styles.formGroup}>
+                  <label className={styles.formLabel}>
+                    E-mail <span className={styles.required}>*</span>
+                  </label>
+                  <input
+                    className={styles.formInput}
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="seu@email.com"
+                    required
+                  />
+                </div>
 
-                <Input
-                  label="Telefone/WhatsApp"
-                  name="telefone"
-                  type="tel"
-                  value={formData.telefone}
-                  onChange={handleChange}
-                  placeholder="(11) 99999-9999"
-                  icon="📱"
-                />
+                <div className={styles.formGroup}>
+                  <label className={styles.formLabel}>
+                    Telefone / WhatsApp
+                  </label>
+                  <input
+                    className={styles.formInput}
+                    type="tel"
+                    name="telefone"
+                    value={formData.telefone}
+                    onChange={handleChange}
+                    placeholder="(11) 99999-9999"
+                  />
+                </div>
 
-                <Input
-                  label="Assunto"
-                  name="assunto"
-                  type="text"
-                  value={formData.assunto}
-                  onChange={handleChange}
-                  placeholder="Sobre o que você gostaria de falar?"
-                  required
-                  icon="💭"
-                />
+                <div className={styles.formGroup}>
+                  <label className={styles.formLabel}>
+                    Assunto <span className={styles.required}>*</span>
+                  </label>
+                  <input
+                    className={styles.formInput}
+                    type="text"
+                    name="assunto"
+                    value={formData.assunto}
+                    onChange={handleChange}
+                    placeholder="Sobre o que você gostaria de falar?"
+                    required
+                  />
+                </div>
 
-                <div className="space-y-2">
-                  <label className="block text-sm font-medium text-neutral-dark">
-                    Mensagem <span className="text-error">*</span>
+                <div className={styles.formGroup}>
+                  <label className={styles.formLabel}>
+                    Mensagem <span className={styles.required}>*</span>
                   </label>
                   <textarea
+                    className={styles.formTextarea}
                     name="mensagem"
                     value={formData.mensagem}
                     onChange={handleChange}
                     placeholder="Conte-nos mais detalhes..."
                     required
-                    rows={4}
-                    className="w-full p-4 border-2 border-neutral-light rounded-md focus:border-primary-orange focus:outline-none focus:ring-3 focus:ring-primary-orange/10 transition-all resize-vertical"
                   />
                 </div>
 
@@ -170,33 +193,120 @@ export default function ContatoPage() {
               </form>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* FAQ Rápido */}
-          <div className="mt-16 bg-white rounded-xl p-8 shadow-md">
-            <h3 className="text-2xl font-primary font-semibold text-neutral-dark mb-6 text-center">
-              Perguntas Frequentes 🤔
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="font-semibold text-neutral-dark mb-2">Como adotar um pet?</h4>
-                <p className="text-sm text-neutral-medium">Navegue pelos pets disponíveis, escolha um que combine com você e envie uma solicitação de adoção.</p>
-              </div>
-              <div>
-                <h4 className="font-semibold text-neutral-dark mb-2">Posso cadastrar meu pet?</h4>
-                <p className="text-sm text-neutral-medium">Sim! Crie uma conta e cadastre pets para adoção de forma gratuita e segura.</p>
-              </div>
-              <div>
-                <h4 className="font-semibold text-neutral-dark mb-2">A adoção tem custo?</h4>
-                <p className="text-sm text-neutral-medium">A plataforma é gratuita. Alguns pets podem ter taxa de adoção para cobrir cuidados veterinários.</p>
-              </div>
-              <div>
-                <h4 className="font-semibold text-neutral-dark mb-2">Como funciona a aprovação?</h4>
-                <p className="text-sm text-neutral-medium">O tutor atual avalia seu perfil e decide sobre a adoção baseado no bem-estar do animal.</p>
-              </div>
+      {/* Benefits Section */}
+      <section className={styles.benefitsSection}>
+        <div className={styles.benefitsContainer}>
+          <h2 className={styles.benefitsTitle}>
+            Por que nos <span className={styles.highlight}>Contactar?</span>
+          </h2>
+          
+          <div className={styles.benefitsGrid}>
+            <div className={styles.benefitCard}>
+              <span className={styles.benefitIcon}>⚡</span>
+              <h3 className={styles.benefitTitle}>Resposta Rápida</h3>
+              <p className={styles.benefitDescription}>
+                Respondemos mensagens em até 24h. Queremos ajudar você rápido!
+              </p>
+            </div>
+
+            <div className={styles.benefitCard}>
+              <span className={styles.benefitIcon}>🤝</span>
+              <h3 className={styles.benefitTitle}>Atendimento Personalizado</h3>
+              <p className={styles.benefitDescription}>
+                Entendemos sua situação específica e oferecemos orientação customizada.
+              </p>
+            </div>
+
+            <div className={styles.benefitCard}>
+              <span className={styles.benefitIcon}>💚</span>
+              <h3 className={styles.benefitTitle}>Foco no Bem-estar</h3>
+              <p className={styles.benefitDescription}>
+                Priorizamos sempre o bem-estar dos animais e a segurança das famílias.
+              </p>
+            </div>
+
+            <div className={styles.benefitCard}>
+              <span className={styles.benefitIcon}>📞</span>
+              <h3 className={styles.benefitTitle}>Multi-canal</h3>
+              <p className={styles.benefitDescription}>
+                Entre em contato por email, WhatsApp ou telefone. Escolha o melhor para você!
+              </p>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className={styles.faqSection}>
+        <div className={styles.faqContainer}>
+          <h2 className={styles.faqTitle}>
+            Perguntas Frequentes 🤔
+          </h2>
+          
+          <div className={styles.faqGrid}>
+            <div className={styles.faqItem}>
+              <h4 className={styles.faqQuestion}>Como adotar um pet?</h4>
+              <p className={styles.faqAnswer}>
+                Navegue pelos pets disponíveis, escolha um que combine com você, envie uma solicitação de adoção e nosso time entrará em contato.
+              </p>
+            </div>
+
+            <div className={styles.faqItem}>
+              <h4 className={styles.faqQuestion}>Posso cadastrar meu pet?</h4>
+              <p className={styles.faqAnswer}>
+                Sim! Crie uma conta, vá até sua dashboard e cadastre pets para adoção de forma gratuita e segura.
+              </p>
+            </div>
+
+            <div className={styles.faqItem}>
+              <h4 className={styles.faqQuestion}>A adoção tem custo?</h4>
+              <p className={styles.faqAnswer}>
+                A plataforma é gratuita. Alguns pets podem ter taxa de adoção para cobrir cuidados veterinários.
+              </p>
+            </div>
+
+            <div className={styles.faqItem}>
+              <h4 className={styles.faqQuestion}>Como funciona a aprovação?</h4>
+              <p className={styles.faqAnswer}>
+                O tutor atual avalia seu perfil e decide sobre a adoção baseado no bem-estar do animal. Você será notificado.
+              </p>
+            </div>
+
+            <div className={styles.faqItem}>
+              <h4 className={styles.faqQuestion}>Quanto tempo leva o processo?</h4>
+              <p className={styles.faqAnswer}>
+                Geralmente de 3 a 7 dias. Você pode contatar o tutor direto pelo WhatsApp para agilizar.
+              </p>
+            </div>
+
+            <div className={styles.faqItem}>
+              <h4 className={styles.faqQuestion}>E se tiver mais dúvidas?</h4>
+              <p className={styles.faqAnswer}>
+                Não deixe de nos contactar! Estamos sempre prontos para ajudar. Use o formulário acima! 😊
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className={styles.ctaSection}>
+        <div className={styles.ctaContainer}>
+          <h2 className={styles.ctaTitle}>
+            Pronto para Fazer Parte de Nossa Comunidade? 💚
+          </h2>
+          <p className={styles.ctaDescription}>
+            Seja para adotar, cadastrar um pet ou apenas conversar sobre nossas iniciativas, 
+            estamos aqui para ajudar. Vamos juntos dar uma segunda chance aos nossos amigos peludos!
+          </p>
+          <Button size="large" variant="outline">
+            Enviar Mensagem Agora 📬
+          </Button>
+        </div>
+      </section>
     </Layout>
   );
 }
