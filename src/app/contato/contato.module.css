@@ -379,14 +379,22 @@
 
 /* Override button styles for CTA section */
 .ctaContainer :global(.button.outline) {
-  background: transparent;
-  color: var(--neutral-white);
-  border: 2px solid var(--neutral-white);
+  background: white;
+  color: #2ECC71;
+  border: 2px solid white;
+  font-weight: 700;
+  padding: 1rem 2.5rem;
 }
 
 .ctaContainer :global(.button.outline:hover:not(:disabled)) {
-  background: var(--neutral-white);
-  color: var(--primary-green);
+  background: #f0f0f0;
+  color: #27AE60;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+}
+
+.ctaContainer :global(.button.outline:active:not(:disabled)) {
+  transform: translateY(0);
 }
 
 /* Responsive */
