@@ -1,78 +1,112 @@
 import Link from 'next/link';
-import { Button } from '@/components/ui';
+import styles from './verify-request.module.css';
 
 export const metadata = {
   title: 'Verificação de Email - PetAdopt',
-  description: 'Verifique seu email para completar o registro.',
+  description: 'Verifique seu email para completar o registro e começar a adotar.',
 };
 
 export default function VerifyRequestPage({ searchParams }) {
   const email = searchParams?.email;
 
+  const steps = [
+    {
+      number: 1,
+      text: 'Verifique sua caixa de entrada principal'
+    },
+    {
+      number: 2,
+      text: 'Procure por emails de spam ou lixo eletrônico'
+    },
+    {
+      number: 3,
+      text: 'Clique no link de verificação no email'
+    },
+    {
+      number: 4,
+      text: 'Retorne para fazer login e comece a adotar'
+    }
+  ];
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8 text-center">
-        <div>
-          <Link href="/" className="inline-block">
-            <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth={2} 
-                  d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" 
-                />
-              </svg>
-            </div>
-          </Link>
-          <h1 className="text-2xl font-bold text-gray-900">
-            Verifique seu Email
-          </h1>
-          <p className="mt-2 text-sm text-gray-600">
-            Um email de verificação foi enviado para{' '}
-            {email && (
-              <span className="font-medium text-gray-900">{email}</span>
-            )}
-          </p>
-        </div>
-
-        <div className="space-y-4">
-          <div className="bg-blue-50 border border-blue-200 rounded-md p-4">
-            <div className="text-sm text-blue-800">
-              <p className="font-medium mb-2">Próximos passos:</p>
-              <ol className="list-decimal list-inside space-y-1 text-left">
-                <li>Verifique sua caixa de entrada</li>
-                <li>Procure por spam ou lixo eletrônico</li>
-                <li>Clique no link de verificação</li>
-                <li>Retorne para fazer login</li>
-              </ol>
-            </div>
+    <div className={styles.container}>
+      <div className={styles.card}>
+        {/* Icon */}
+        <div className={styles.iconContainer}>
+          <div className={styles.iconBadge}>
+            <svg 
+              className={styles.iconSvg}
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={1.5}
+                d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" 
+              />
+            </svg>
           </div>
+        </div>
 
-          <p className="text-xs text-gray-500">
-            Não recebeu o email? Verifique sua pasta de spam ou tente cadastrar novamente.
+        {/* Title & Description */}
+        <h1 className={styles.title}>
+          Verifique seu Email 📧
+        </h1>
+        
+        <p className={styles.description}>
+          Um email de verificação foi enviado para:
+        </p>
+        
+        {email && (
+          <p className={styles.description}>
+            <span className={styles.emailHighlight}>{email}</span>
+          </p>
+        )}
+
+        {/* Steps */}
+        <div className={styles.stepsSection}>
+          <p className={styles.stepsTitle}>Próximos passos:</p>
+          
+          <div className={styles.stepsList}>
+            {steps.map((step) => (
+              <div key={step.number} className={styles.stepItem}>
+                <div className={styles.stepNumber}>
+                  {step.number}
+                </div>
+                <p className={styles.stepText}>
+                  {step.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Info Box */}
+        <div className={styles.infoBox}>
+          <p className={styles.infoTitle}>💡 Dica Importante</p>
+          <p className={styles.infoText}>
+            Se não receber o email em alguns minutos, verifique sua pasta de spam. 
+            Às vezes emails de verificação acabam lá por engano.
           </p>
         </div>
 
-        <div className="space-y-3">
-          <Button
-            as="link"
-            href="/auth/signin"
-            variant="primary"
-            fullWidth
-          >
-            Ir para Login
-          </Button>
+        {/* Buttons */}
+        <div className={styles.buttonsSection}>
+          <Link href="/auth/signin" className={styles.primaryButton}>
+            ✓ Ir para Login
+          </Link>
           
-          <Button
-            as="link"
-            href="/auth/signup"
-            variant="outline"
-            fullWidth
-          >
+          <Link href="/auth/signup" className={styles.secondaryButton}>
             Tentar Cadastro Novamente
-          </Button>
+          </Link>
         </div>
+
+        {/* Help Text */}
+        <p className={styles.helpText}>
+          Está com problemas? <Link href="/contato" className={styles.helpLink}>Entre em contato conosco</Link>
+        </p>
       </div>
     </div>
   );
