@@ -31,7 +31,7 @@
   align-items: center;
   gap: var(--space-xs);
   text-decoration: none;
-  color: var(--neutral-medium);
+  color: var(--primary-orange);
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-sm);
   transition: all 0.2s ease;
@@ -39,8 +39,8 @@
 }
 
 .link:hover {
-  color: var(--primary-orange);
-  background: rgba(255, 140, 66, 0.1);
+  color: var(--primary-orange-hover);
+  background: rgba(255, 140, 66, 0.15);
 }
 
 .link:hover .icon {
@@ -58,7 +58,7 @@
   color: var(--neutral-dark);
   font-weight: var(--font-semibold);
   padding: var(--space-xs) var(--space-sm);
-  background: rgba(255, 140, 66, 0.15);
+  background: var(--primary-orange);
   border-radius: var(--radius-sm);
 }
 
@@ -216,6 +216,8 @@
   
   .currentText {
     color: rgba(255, 255, 255, 0.9);
-    background: rgba(255, 140, 66, 0.3);
+    background: var(--primary-orange);
+    border-radius: var(--radius-full);
+    padding: var(--space-xs) var(--space-md);
   }
 }
