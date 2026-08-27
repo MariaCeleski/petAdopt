@@ -42,24 +42,42 @@ export function PetImageUpload({ images = [], onImagesChange, maxImages = 5 }) {
   const uploadFile = async (file) => {
     validateFile(file);
 
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('upload_preset', process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || 'petadopt_unsigned');
+    // Check if Cloudinary credentials are configured
+    const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+    const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
 
-    const response = await fetch(
-      `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
-      {
-        method: 'POST',
-        body: formData
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error('Erro ao fazer upload. Tente novamente.');
+    if (!cloudName || !uploadPreset) {
+      console.warn('Cloudinary not configured. Please set NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME and NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET environment variables.');
+      throw new Error('Configuração de upload não disponível. Contacte o administrador.');
     }
 
-    const data = await response.json();
-    return data.secure_url;
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', uploadPreset);
+
+    try {
+      const response = await fetch(
+        `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+        {
+          method: 'POST',
+          body: formData
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        console.error('Cloudinary error:', errorData);
+        throw new Error('Erro ao fazer upload. Verifique sua conexão e tente novamente.');
+      }
+
+      const data = await response.json();
+      return data.secure_url;
+    } catch (err) {
+      if (err instanceof TypeError) {
+        throw new Error('Erro de conexão. Verifique sua internet e tente novamente.');
+      }
+      throw err;
+    }
   };
 
   const handleFiles = async (files) => {
@@ -80,7 +98,8 @@ export function PetImageUpload({ images = [], onImagesChange, maxImages = 5 }) {
           const url = await uploadFile(file);
           uploadedUrls.push(url);
         } catch (err) {
-          setError(err.message);
+          console.error('Upload error:', err);
+          setError(err.message || 'Erro ao fazer upload. Tente novamente.');
           break;
         }
       }

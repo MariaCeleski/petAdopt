@@ -28,6 +28,42 @@ export default function NewPetPage() {
     redirect('/dashboard/adopter');
   }
 
+  // Breed lists by species
+  const breedsBySpecies = {
+    DOG: [
+      'Golden Retriever',
+      'Labrador Retriever',
+      'Poodle',
+      'Pastor Alemão',
+      'Beagle',
+      'Bulldog',
+      'Shih Tzu',
+      'Chihuahua',
+      'Dachshund',
+      'Cocker Spaniel',
+      'Boxer',
+      'Pug',
+      'Yorkshire Terrier',
+      'Schnauzer',
+      'Husky',
+      'Outro'
+    ],
+    CAT: [
+      'Siamês',
+      'Persa',
+      'Maine Coon',
+      'Bengal',
+      'Ragdoll',
+      'British Shorthair',
+      'Sphynx',
+      'Turkish Van',
+      'Abissínio',
+      'Birmanês',
+      'Gato Doméstico',
+      'Outro'
+    ]
+  };
+
   const [formData, setFormData] = useState({
     name: '',
     species: 'DOG',
@@ -190,15 +226,20 @@ export default function NewPetPage() {
 
               <div className={styles.formGroup}>
                 <label className={styles.label}>Raça *</label>
-                <input
-                  type="text"
+                <select
                   name="breed"
                   value={formData.breed}
                   onChange={handleInputChange}
-                  placeholder="Ex: Golden Retriever, Siamês"
                   required
-                  className={styles.input}
-                />
+                  className={styles.select}
+                >
+                  <option value="">Selecione uma raça</option>
+                  {breedsBySpecies[formData.species].map(breed => (
+                    <option key={breed} value={breed}>
+                      {breed}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
 
