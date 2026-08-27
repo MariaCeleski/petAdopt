@@ -39,7 +39,7 @@ export default async function RootLayout({ children }) {
   const session = await getServerSession(authOptions);
 
   return (
-    <html lang="pt-BR" className={`${inter.variable} ${poppins.variable}`}>
+    <html lang="pt-BR" className={`${inter.variable} ${poppins.variable}`} suppressHydrationWarning>
       <body className={`${inter.className} min-h-screen flex flex-col`}>
         <AuthProvider session={session}>
           {children}

@@ -2,7 +2,7 @@
   background: var(--neutral-white);
   border: 1px solid var(--neutral-light);
   transition: all 0.2s ease;
-  overflow: hidden;
+  overflow: visible;
   display: flex;
   flex-direction: column;
 }
@@ -348,11 +348,11 @@
 /* High contrast support */
 @media (prefers-contrast: high) {
   .card {
-    border: 2px solid var(--neutral-dark);
+    border: 2px solid var(--neutral-medium);
   }
   
   .outlined {
-    border: 3px solid var(--neutral-dark);
+    border: 3px solid var(--neutral-medium);
   }
   
   .hover:hover {

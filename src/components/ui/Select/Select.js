@@ -28,14 +28,41 @@ const Select = forwardRef(({
   const [searchTerm, setSearchTerm] = useState('');
   const [focusedIndex, setFocusedIndex] = useState(-1);
   const [isHydrated, setIsHydrated] = useState(false);
+  const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0 });
+  const [useFixedPositioning, setUseFixedPositioning] = useState(false);
   const selectRef = useRef(null);
   const inputRef = useRef(null);
+  const dropdownRef = useRef(null);
   
   const selectId = props.id || (isHydrated ? `select-${Math.random().toString(36).substr(2, 9)}` : 'select-ssr');
 
   useEffect(() => {
     setIsHydrated(true);
   }, []);
+
+  // Calculate dropdown position for fixed positioning
+  useEffect(() => {
+    if (isOpen && selectRef.current) {
+      const rect = selectRef.current.querySelector(`.${styles.select}`)?.getBoundingClientRect();
+      if (rect) {
+        const top = rect.bottom + window.scrollY + 4; // 4px gap below select
+        const left = rect.left + window.scrollX;
+        const viewportHeight = window.innerHeight;
+        const dropdownHeight = 240; // Max height from CSS
+        
+        // Check if dropdown fits below, if not position above
+        const fitsBelow = rect.bottom + dropdownHeight < viewportHeight;
+        
+        setDropdownPosition({
+          top: fitsBelow ? top : rect.top + window.scrollY - dropdownHeight - 4,
+          left: left
+        });
+        
+        // Use fixed positioning on mobile and tablet, absolute on desktop
+        setUseFixedPositioning(window.innerWidth < 1024);
+      }
+    }
+  }, [isOpen]);
 
   // Filter options based on search term
   const filteredOptions = searchable 
@@ -206,7 +233,21 @@ const Select = forwardRef(({
         </div>
         
         {isOpen && (
-          <div className={styles.dropdown} role="listbox" aria-multiselectable={multiple}>
+          <div 
+            ref={dropdownRef}
+            className={clsx(
+              styles.dropdown, 
+              { [styles.fixed]: useFixedPositioning }
+            )}
+            style={useFixedPositioning ? {
+              position: 'fixed',
+              top: `${dropdownPosition.top}px`,
+              left: `${dropdownPosition.left}px`,
+              width: selectRef.current?.querySelector(`.${styles.select}`)?.offsetWidth || 'auto'
+            } : {}}
+            role="listbox" 
+            aria-multiselectable={multiple}
+          >
             {filteredOptions.length === 0 ? (
               <div className={styles.noOptions}>
                 {searchable && searchTerm ? 'Nenhuma opção encontrada' : 'Sem opções disponíveis'}
