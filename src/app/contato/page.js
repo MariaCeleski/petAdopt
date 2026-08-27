@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Layout from '@/components/common/Layout';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
+import PageNavigation from '@/components/common/PageNavigation/PageNavigation';
 import styles from './contato.module.css';
 
 export default function ContatoPage() {
@@ -307,6 +308,12 @@ export default function ContatoPage() {
           </Button>
         </div>
       </section>
+
+      {/* Page Navigation */}
+      <PageNavigation 
+        previousPage={{ label: '← Sobre Nós', href: '/sobre' }}
+        nextPage={{ label: 'Termos →', href: '/termos' }}
+      />
     </Layout>
   );
 }

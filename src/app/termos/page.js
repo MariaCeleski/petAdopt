@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Layout from '@/components/common/Layout';
+import PageNavigation from '@/components/common/PageNavigation/PageNavigation';
 import styles from './termos.module.css';
 
 export default function TermosPage() {
@@ -331,6 +332,12 @@ export default function TermosPage() {
           </Link>
         </div>
       </section>
+
+      {/* Page Navigation */}
+      <PageNavigation 
+        previousPage={{ label: 'Processo de Adoção', href: '/processo-adocao' }}
+        nextPage={{ label: 'Cadastrar Pet', href: '/tutores/cadastrar' }}
+      />
     </Layout>
   );
 }

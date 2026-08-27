@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import Layout from '@/components/common/Layout';
+import PageNavigation from '@/components/common/PageNavigation/PageNavigation';
 import styles from './faq.module.css';
 
 const FAQ_DATA = {
@@ -280,6 +281,12 @@ export default function FAQPage() {
           </a>
         </div>
       </section>
+
+      {/* Page Navigation */}
+      <PageNavigation 
+        previousPage={{ label: '← Como Adotar', href: '/processo-adocao' }}
+        nextPage={{ label: 'Sobre Nós →', href: '/sobre' }}
+      />
     </Layout>
   );
 }

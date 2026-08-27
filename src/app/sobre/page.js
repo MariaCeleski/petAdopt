@@ -2,6 +2,7 @@
 
 import Layout from '@/components/common/Layout';
 import Button from '@/components/ui/Button';
+import PageNavigation from '@/components/common/PageNavigation/PageNavigation';
 import styles from './sobre.module.css';
 
 export default function SobrePage() {
@@ -249,6 +250,12 @@ export default function SobrePage() {
           </Button>
         </div>
       </section>
+
+      {/* Page Navigation */}
+      <PageNavigation 
+        previousPage={{ label: '← FAQ', href: '/faq' }}
+        nextPage={{ label: 'Contato →', href: '/contato' }}
+      />
     </Layout>
   );
 }

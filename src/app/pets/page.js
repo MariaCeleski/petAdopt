@@ -1,5 +1,6 @@
 import { fetchPets, getPetStats } from "@/lib/pets";
 import { PublicPetCatalog } from "./PublicPetCatalog";
+import PageNavigation from "@/components/common/PageNavigation/PageNavigation";
 import styles from './pets.module.css';
 
 /**
@@ -171,6 +172,12 @@ export default async function PetsPage({ searchParams = {} }) {
           />
         </div>
       </main>
+
+      {/* Page Navigation */}
+      <PageNavigation 
+        previousPage={{ label: 'Como Adotar', href: '/processo-adocao' }}
+        nextPage={{ label: 'Cadastrar um Pet', href: '/tutores/cadastrar' }}
+      />
     </div>
   );
 }

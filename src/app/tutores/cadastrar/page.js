@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Layout from '@/components/common/Layout';
+import PageNavigation from '@/components/common/PageNavigation/PageNavigation';
 import styles from './cadastrar.module.css';
 
 export default function CadastrarPetPage() {
@@ -786,6 +787,12 @@ export default function CadastrarPetPage() {
           </p>
         </div>
       </section>
+
+      {/* Page Navigation */}
+      <PageNavigation 
+        previousPage={{ label: 'Termos de Serviço', href: '/termos' }}
+        nextPage={null}
+      />
     </Layout>
   );
 }
