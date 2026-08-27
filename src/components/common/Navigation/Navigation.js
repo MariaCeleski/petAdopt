@@ -54,7 +54,7 @@ const navigationItems = {
     },
     {
       label: 'Cadastrar Pet',
-      href: '/dashboard/pets/novo',
+      href: '/tutores/cadastrar',
       icon: '➕',
       authRequired: true
     }

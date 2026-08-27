@@ -68,7 +68,7 @@ export default function Header({
               Adotar Pet
             </Link>
             {session?.user && (
-              <Link href="/dashboard/pets/novo" className={styles.navLink}>
+              <Link href="/tutores/cadastrar" className={styles.navLink}>
                 Cadastrar Pet
               </Link>
             )}
@@ -171,7 +171,7 @@ export default function Header({
             <Link href="/pets" className={styles.mobileNavLink}>
               🐕 Adotar Pet
             </Link>
-            <Link href="/cadastrar" className={styles.mobileNavLink}>
+            <Link href="/tutores/cadastrar" className={styles.mobileNavLink}>
               💝 Cadastrar Pet
             </Link>
             <Link href="/sobre" className={styles.mobileNavLink}>

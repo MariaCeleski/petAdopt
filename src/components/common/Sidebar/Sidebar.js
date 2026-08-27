@@ -34,7 +34,7 @@ const sidebarSections = {
       title: 'Meus Pets',
       items: [
         { label: 'Meus Pets', href: '/dashboard/pets', icon: '💝' },
-        { label: 'Cadastrar Pet', href: '/dashboard/pets/novo', icon: '➕' },
+        { label: 'Cadastrar Pet', href: '/tutores/cadastrar', icon: '➕' },
         { label: 'Favoritos', href: '/dashboard/favoritos', icon: '❤️' },
       ]
     },
@@ -65,7 +65,7 @@ const sidebarSections = {
     {
       title: 'Ferramentas',
       items: [
-        { label: 'Cadastrar Pet', href: '/dashboard/pets/novo', icon: '➕' },
+        { label: 'Cadastrar Pet', href: '/tutores/cadastrar', icon: '➕' },
         { label: 'Relatórios', href: '/dashboard/relatorios', icon: '📊' },
         { label: 'Configurações', href: '/dashboard/configuracoes', icon: '⚙️' },
       ]

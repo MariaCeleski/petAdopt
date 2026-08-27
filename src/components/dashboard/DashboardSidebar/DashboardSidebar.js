@@ -46,7 +46,7 @@ export default function DashboardSidebar({ userType = 'ADOPTER', className }) {
       {
         title: 'Ações',
         items: [
-          { label: 'Cadastrar Pet', href: '/dashboard/pets/novo', icon: '➕' },
+          { label: 'Cadastrar Pet', href: '/tutores/cadastrar', icon: '➕' },
         ]
       },
       {
@@ -77,7 +77,7 @@ export default function DashboardSidebar({ userType = 'ADOPTER', className }) {
       {
         title: 'Ferramentas',
         items: [
-          { label: 'Cadastrar Pet', href: '/dashboard/pets/novo', icon: '➕' },
+          { label: 'Cadastrar Pet', href: '/tutores/cadastrar', icon: '➕' },
           { label: 'Relatórios', href: '/dashboard/relatorios', icon: '📊' },
           { label: 'Configurações', href: '/dashboard/configuracoes', icon: '⚙️' },
         ]

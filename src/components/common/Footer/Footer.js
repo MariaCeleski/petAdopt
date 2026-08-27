@@ -48,7 +48,7 @@ export default function Footer() {
           <div className={styles.linkGroup}>
             <h3 className={styles.linkTitle}>Para Tutores</h3>
             <ul className={styles.linkList}>
-              <li><Link href="/cadastrar" className={styles.link}>Cadastrar Pet</Link></li>
+              <li><Link href="/tutores/cadastrar" className={styles.link}>Cadastrar Pet</Link></li>
               <li><Link href="/dashboard" className={styles.link}>Meus Pets</Link></li>
               <li><Link href="/solicitacoes" className={styles.link}>Solicitações</Link></li>
               <li><Link href="/dicas" className={styles.link}>Dicas de Cuidado</Link></li>

@@ -23,10 +23,10 @@ export default function HomePage() {
               </p>
               
               <div className={styles.buttonContainer}>
-                <Button size="large" variant="success">
+                <Button size="large" variant="success" href="/pets" as="link">
                   🐕 Adotar um Pet
                 </Button>
-                <Button size="large" variant="outline">
+                <Button size="large" variant="outline" href="/tutores/cadastrar" as="link">
                   💝 Cadastrar Pet
                 </Button>
               </div>
