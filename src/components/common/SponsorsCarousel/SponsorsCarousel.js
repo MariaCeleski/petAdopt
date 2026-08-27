@@ -17,10 +17,20 @@ export default function SponsorsCarousel() {
     try {
       const response = await fetch('/api/sponsors');
       const data = await response.json();
-      setSponsors(data);
+      
+      // Ensure data is an array
+      if (Array.isArray(data)) {
+        setSponsors(data);
+      } else if (data && typeof data === 'object' && data.sponsors && Array.isArray(data.sponsors)) {
+        setSponsors(data.sponsors);
+      } else {
+        console.warn('Sponsors data is not in expected format:', data);
+        setSponsors([]);
+      }
       setLoading(false);
     } catch (error) {
       console.error('Error fetching sponsors:', error);
+      setSponsors([]);
       setLoading(false);
     }
   };
