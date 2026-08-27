@@ -1,48 +1,49 @@
 import Layout from '@/components/common/Layout';
 import Button from '@/components/ui/Button';
+import styles from './page.module.css';
 
 export default function HomePage() {
   return (
     <Layout showNavigation={false}>
-      <div className="min-h-screen bg-neutral-lighter">
+      <div>
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-primary-orange to-primary-blue text-white py-24 md:py-32">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center animate-slideUp">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-primary mb-6 text-white leading-tight">
+        <section className={styles.heroSection}>
+          <div className={styles.heroContainer}>
+            <div className={styles.heroContent}>
+              <h1 className={styles.heroTitle}>
                 Encontre seu 
-                <span className="text-secondary-yellow"> Companheiro</span> 
+                <span className={styles.highlight}> Companheiro</span> 
                 <br />
                 Perfeito 🐾
               </h1>
               
-              <p className="text-base md:text-lg mb-10 text-white/90 max-w-2xl mx-auto leading-relaxed">
+              <p className={styles.heroDescription}>
                 Conectamos corações. Milhares de cães e gatos estão esperando por uma família amorosa. 
                 Que tal ser você a fazer a diferença na vida de um pet?
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-                <Button size="large" variant="success" className="shadow-xl w-full sm:w-auto">
+              <div className={styles.buttonContainer}>
+                <Button size="large" variant="success">
                   🐕 Adotar um Pet
                 </Button>
-                <Button size="large" variant="outline" className="border-white text-white hover:bg-white hover:text-primary-orange w-full sm:w-auto">
+                <Button size="large" variant="outline">
                   💝 Cadastrar Pet
                 </Button>
               </div>
               
               {/* Estatísticas */}
-              <div className="grid grid-cols-3 gap-4 md:gap-8 mt-12 pt-12 border-t border-white/20">
-                <div className="text-center">
-                  <div className="text-2xl md:text-3xl font-bold font-primary text-secondary-yellow">2.847</div>
-                  <div className="text-xs md:text-sm text-white/80 mt-2">Pets Adotados</div>
+              <div className={styles.statsContainer}>
+                <div className={styles.statItem}>
+                  <span className={styles.statNumber}>2.847</span>
+                  <span className={styles.statLabel}>Pets Adotados</span>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl md:text-3xl font-bold font-primary text-secondary-yellow">156</div>
-                  <div className="text-xs md:text-sm text-white/80 mt-2">Famílias Felizes</div>
+                <div className={styles.statItem}>
+                  <span className={styles.statNumber}>156</span>
+                  <span className={styles.statLabel}>Famílias Felizes</span>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl md:text-3xl font-bold font-primary text-secondary-yellow">89</div>
-                  <div className="text-xs md:text-sm text-white/80 mt-2">Pets Disponíveis</div>
+                <div className={styles.statItem}>
+                  <span className={styles.statNumber}>89</span>
+                  <span className={styles.statLabel}>Pets Disponíveis</span>
                 </div>
               </div>
             </div>
@@ -50,26 +51,26 @@ export default function HomePage() {
         </section>
 
         {/* Pets em Destaque */}
-        <section className="py-20 md:py-28 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16 animate-fadeIn">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-primary font-semibold text-neutral-dark mb-4 leading-tight">
+        <section className={styles.petsSection}>
+          <div className={styles.petsSectionContainer}>
+            <div className={styles.sectionHeader}>
+              <h2 className={styles.sectionTitle}>
                 Pets Esperando por 
-                <span className="text-primary-orange"> Você</span>
+                <span className={styles.highlight}> Você</span>
               </h2>
-              <p className="text-base md:text-lg text-neutral-medium max-w-2xl mx-auto leading-relaxed">
+              <p className={styles.sectionDescription}>
                 Conheça alguns dos nossos amigos peludos que estão prontos para encher sua casa de amor e alegria.
               </p>
             </div>
             
             {/* Grid de Pets Mockados */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
+            <div className={styles.petsGrid}>
               {mockPets.map((pet, index) => (
                 <PetCard key={index} pet={pet} />
               ))}
             </div>
             
-            <div className="text-center">
+            <div style={{ textAlign: 'center' }}>
               <Button size="large" variant="primary">
                 Ver Todos os Pets Disponíveis
               </Button>
@@ -78,20 +79,18 @@ export default function HomePage() {
         </section>
 
         {/* Call to Action */}
-        <section className="py-20 md:py-28 bg-primary-green text-white">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-primary font-semibold mb-6 leading-tight">
-                Pronto para Mudar uma Vida? 💚
-              </h2>
-              <p className="text-base md:text-lg mb-10 text-white/90 leading-relaxed">
-                O processo de adoção é simples, seguro e pensado no bem-estar dos animais. 
-                Cadastre-se e comece sua jornada como tutor responsável hoje mesmo.
-              </p>
-              <Button size="large" variant="outline" className="border-white text-white hover:bg-white hover:text-primary-green">
-                Começar Processo de Adoção
-              </Button>
-            </div>
+        <section className={styles.ctaSection}>
+          <div className={styles.ctaContainer}>
+            <h2 className={styles.ctaTitle}>
+              Pronto para Mudar uma Vida? 💚
+            </h2>
+            <p className={styles.ctaDescription}>
+              O processo de adoção é simples, seguro e pensado no bem-estar dos animais. 
+              Cadastre-se e comece sua jornada como tutor responsável hoje mesmo.
+            </p>
+            <Button size="large" variant="outline">
+              Começar Processo de Adoção
+            </Button>
           </div>
         </section>
       </div>
@@ -101,23 +100,25 @@ export default function HomePage() {
 
 // Componente de Card do Pet (temporário)
 function PetCard({ pet }) {
+  const genderClass = pet.gender === 'Macho' ? 'male' : 'female';
+  
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition hover-lift">
-      <div className="h-48 bg-gradient-to-br from-neutral-light to-neutral-lighter flex items-center justify-center">
-        <span className="text-6xl">{pet.emoji}</span>
+    <div className={styles.petCard}>
+      <div className={styles.petImageContainer}>
+        <span>{pet.emoji}</span>
       </div>
-      <div className="p-6">
-        <h3 className="text-xl font-semibold font-primary text-neutral-dark mb-2">
+      <div className={styles.petContent}>
+        <h3 className={styles.petName}>
           {pet.name}
         </h3>
-        <p className="text-neutral-medium mb-2">{pet.breed} • {pet.age}</p>
-        <p className="text-sm text-neutral-medium mb-4 line-clamp-2">
+        <p className={styles.petInfo}>
+          {pet.breed} • {pet.age}
+        </p>
+        <p className={styles.petDescription}>
           {pet.description}
         </p>
-        <div className="flex items-center justify-between">
-          <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-            pet.gender === 'Macho' ? 'bg-primary-blue/10 text-primary-blue' : 'bg-secondary-coral/10 text-secondary-coral'
-          }`}>
+        <div className={styles.petFooter}>
+          <span className={`${styles.petGender} ${styles[genderClass]}`}>
             {pet.gender}
           </span>
           <Button size="small" variant="outline">
