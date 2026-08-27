@@ -1,0 +1,1574 @@
+<testsuites id="" name="" tests="372" failures="0" skipped="372" errors="0" time="0.11306400000000003">
+<testsuite name="specs/adoption-workflow.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="chromium" tests="4" failures="0" skipped="4" time="0" errors="0">
+<testcase name="Fluxo Completo de Adoção › deve manifestar interesse em um pet disponível" classname="specs/adoption-workflow.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Fluxo Completo de Adoção › deve preencher e submeter formulário de adoção" classname="specs/adoption-workflow.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Fluxo Completo de Adoção › deve permitir Pet Owner revisar e aprovar adoção" classname="specs/adoption-workflow.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Fluxo Completo de Adoção › deve permitir Pet Owner rejeitar adoção com motivo" classname="specs/adoption-workflow.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/authentication.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="chromium" tests="8" failures="0" skipped="8" time="0" errors="0">
+<testcase name="Autenticação - Fluxo Completo › deve registrar novo usuário com email e senha" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve fazer login com credenciais válidas" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve rejeitar login com credenciais inválidas" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve validar força da senha durante registro" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve fazer logout e redirecionar para home" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve redirecionar para login ao acessar página protegida sem autenticação" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve manter sessão após refresh da página" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve mostrar email do usuário na sessão" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/dashboard.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="chromium" tests="15" failures="0" skipped="15" time="0" errors="0">
+<testcase name="Dashboard - Adotante › deve exibir dashboard do adotante" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Adotante › deve mostrar seção de pets favoritos" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Adotante › deve mostrar seção de solicitações de adoção" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Adotante › deve permitir editar perfil do adotante" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Adotante › deve exibir estatísticas de atividade" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve exibir dashboard do proprietário" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve mostrar seção de pets cadastrados" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve mostrar seção de solicitações recebidas" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve permitir criar novo pet do dashboard" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve permitir editar perfil" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve exibir estatísticas de adoção" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve mostrar atividade recente" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Editar Perfil › deve permitir editar nome do usuário" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Editar Perfil › deve permitir editar avatar/foto" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Editar Perfil › deve validar dados antes de salvar" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/mobile.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="chromium" tests="7" failures="0" skipped="7" time="0" errors="0">
+<testcase name="Mobile (Pixel 5) › deve permitir deslizar em lista de pets" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve permitir tap em botão de interesse" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve permitir scrolling vertical sem problemas" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve fechar menu em tap fora" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve completar fluxo de login em mobile" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve ter teclado otimizado para mobile" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve exibir corretamente em 375x667" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/pet-management.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="chromium" tests="6" failures="0" skipped="6" time="0" errors="0">
+<testcase name="Gerenciamento de Pets › deve criar novo pet com todos os campos obrigatórios" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve validar campos obrigatórios antes de criar pet" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve editar informações do pet" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve mudar status do pet" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve manter campos opcionais" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve mostrar apenas pets disponíveis no catálogo público" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/responsiveness.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="chromium" tests="14" failures="0" skipped="14" time="0" errors="0">
+<testcase name="Responsividade - Desktop › deve estar acessível em desktop (1920x1080)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Desktop › deve renderizar catálogo de pets em desktop" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Small › deve estar acessível em mobile small (375x667)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Small › deve permitir completar fluxo de registro em mobile" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Small › deve ter navegação apropriada em mobile small" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Small › deve ter botões touch-friendly em mobile" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Large › deve estar acessível em mobile large (414x896)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Large › deve renderizar pet list em mobile large" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Tablet › deve estar acessível em tablet (768x1024)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Tablet › deve mostrar layout grid em tablet" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Desktop Large › deve estar acessível em desktop large (2560x1440)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Desktop Large › deve renderizar múltiplos pets em desktop large" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Imagens e Performance › deve ter imagens otimizadas" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Imagens e Performance › deve não ter horizontal scroll em nenhum viewport" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/tablet.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="chromium" tests="8" failures="0" skipped="8" time="0" errors="0">
+<testcase name="Tablet (iPad Pro) › deve mostrar layout tablet otimizado" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve ter navegação sidebar em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve exibir corretamente em 1024x1366" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve permitir interações touch em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve ter botões touch-friendly em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve permitir scroll horizontal da grid em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve exibir imagens otimizadas em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve permitir completar fluxo em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/adoption-workflow.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="firefox" tests="4" failures="0" skipped="4" time="0" errors="0">
+<testcase name="Fluxo Completo de Adoção › deve manifestar interesse em um pet disponível" classname="specs/adoption-workflow.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Fluxo Completo de Adoção › deve preencher e submeter formulário de adoção" classname="specs/adoption-workflow.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Fluxo Completo de Adoção › deve permitir Pet Owner revisar e aprovar adoção" classname="specs/adoption-workflow.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Fluxo Completo de Adoção › deve permitir Pet Owner rejeitar adoção com motivo" classname="specs/adoption-workflow.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/authentication.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="firefox" tests="8" failures="0" skipped="8" time="0" errors="0">
+<testcase name="Autenticação - Fluxo Completo › deve registrar novo usuário com email e senha" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve fazer login com credenciais válidas" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve rejeitar login com credenciais inválidas" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve validar força da senha durante registro" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve fazer logout e redirecionar para home" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve redirecionar para login ao acessar página protegida sem autenticação" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve manter sessão após refresh da página" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve mostrar email do usuário na sessão" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/dashboard.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="firefox" tests="15" failures="0" skipped="15" time="0" errors="0">
+<testcase name="Dashboard - Adotante › deve exibir dashboard do adotante" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Adotante › deve mostrar seção de pets favoritos" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Adotante › deve mostrar seção de solicitações de adoção" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Adotante › deve permitir editar perfil do adotante" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Adotante › deve exibir estatísticas de atividade" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve exibir dashboard do proprietário" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve mostrar seção de pets cadastrados" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve mostrar seção de solicitações recebidas" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve permitir criar novo pet do dashboard" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve permitir editar perfil" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve exibir estatísticas de adoção" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve mostrar atividade recente" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Editar Perfil › deve permitir editar nome do usuário" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Editar Perfil › deve permitir editar avatar/foto" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Editar Perfil › deve validar dados antes de salvar" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/mobile.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="firefox" tests="7" failures="0" skipped="7" time="0" errors="0">
+<testcase name="Mobile (Pixel 5) › deve permitir deslizar em lista de pets" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve permitir tap em botão de interesse" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve permitir scrolling vertical sem problemas" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve fechar menu em tap fora" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve completar fluxo de login em mobile" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve ter teclado otimizado para mobile" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve exibir corretamente em 375x667" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/pet-management.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="firefox" tests="6" failures="0" skipped="6" time="0" errors="0">
+<testcase name="Gerenciamento de Pets › deve criar novo pet com todos os campos obrigatórios" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve validar campos obrigatórios antes de criar pet" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve editar informações do pet" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve mudar status do pet" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve manter campos opcionais" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve mostrar apenas pets disponíveis no catálogo público" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/responsiveness.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="firefox" tests="14" failures="0" skipped="14" time="0" errors="0">
+<testcase name="Responsividade - Desktop › deve estar acessível em desktop (1920x1080)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Desktop › deve renderizar catálogo de pets em desktop" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Small › deve estar acessível em mobile small (375x667)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Small › deve permitir completar fluxo de registro em mobile" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Small › deve ter navegação apropriada em mobile small" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Small › deve ter botões touch-friendly em mobile" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Large › deve estar acessível em mobile large (414x896)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Large › deve renderizar pet list em mobile large" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Tablet › deve estar acessível em tablet (768x1024)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Tablet › deve mostrar layout grid em tablet" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Desktop Large › deve estar acessível em desktop large (2560x1440)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Desktop Large › deve renderizar múltiplos pets em desktop large" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Imagens e Performance › deve ter imagens otimizadas" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Imagens e Performance › deve não ter horizontal scroll em nenhum viewport" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/tablet.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="firefox" tests="8" failures="0" skipped="8" time="0" errors="0">
+<testcase name="Tablet (iPad Pro) › deve mostrar layout tablet otimizado" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve ter navegação sidebar em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve exibir corretamente em 1024x1366" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve permitir interações touch em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve ter botões touch-friendly em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve permitir scroll horizontal da grid em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve exibir imagens otimizadas em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve permitir completar fluxo em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/adoption-workflow.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="webkit" tests="4" failures="0" skipped="4" time="0" errors="0">
+<testcase name="Fluxo Completo de Adoção › deve manifestar interesse em um pet disponível" classname="specs/adoption-workflow.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Fluxo Completo de Adoção › deve preencher e submeter formulário de adoção" classname="specs/adoption-workflow.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Fluxo Completo de Adoção › deve permitir Pet Owner revisar e aprovar adoção" classname="specs/adoption-workflow.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Fluxo Completo de Adoção › deve permitir Pet Owner rejeitar adoção com motivo" classname="specs/adoption-workflow.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/authentication.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="webkit" tests="8" failures="0" skipped="8" time="0" errors="0">
+<testcase name="Autenticação - Fluxo Completo › deve registrar novo usuário com email e senha" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve fazer login com credenciais válidas" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve rejeitar login com credenciais inválidas" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve validar força da senha durante registro" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve fazer logout e redirecionar para home" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve redirecionar para login ao acessar página protegida sem autenticação" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve manter sessão após refresh da página" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve mostrar email do usuário na sessão" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/dashboard.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="webkit" tests="15" failures="0" skipped="15" time="0" errors="0">
+<testcase name="Dashboard - Adotante › deve exibir dashboard do adotante" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Adotante › deve mostrar seção de pets favoritos" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Adotante › deve mostrar seção de solicitações de adoção" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Adotante › deve permitir editar perfil do adotante" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Adotante › deve exibir estatísticas de atividade" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve exibir dashboard do proprietário" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve mostrar seção de pets cadastrados" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve mostrar seção de solicitações recebidas" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve permitir criar novo pet do dashboard" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve permitir editar perfil" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve exibir estatísticas de adoção" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve mostrar atividade recente" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Editar Perfil › deve permitir editar nome do usuário" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Editar Perfil › deve permitir editar avatar/foto" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Editar Perfil › deve validar dados antes de salvar" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/mobile.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="webkit" tests="7" failures="0" skipped="7" time="0" errors="0">
+<testcase name="Mobile (Pixel 5) › deve permitir deslizar em lista de pets" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve permitir tap em botão de interesse" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve permitir scrolling vertical sem problemas" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve fechar menu em tap fora" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve completar fluxo de login em mobile" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve ter teclado otimizado para mobile" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve exibir corretamente em 375x667" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/pet-management.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="webkit" tests="6" failures="0" skipped="6" time="0" errors="0">
+<testcase name="Gerenciamento de Pets › deve criar novo pet com todos os campos obrigatórios" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve validar campos obrigatórios antes de criar pet" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve editar informações do pet" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve mudar status do pet" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve manter campos opcionais" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve mostrar apenas pets disponíveis no catálogo público" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/responsiveness.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="webkit" tests="14" failures="0" skipped="14" time="0" errors="0">
+<testcase name="Responsividade - Desktop › deve estar acessível em desktop (1920x1080)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Desktop › deve renderizar catálogo de pets em desktop" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Small › deve estar acessível em mobile small (375x667)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Small › deve permitir completar fluxo de registro em mobile" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Small › deve ter navegação apropriada em mobile small" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Small › deve ter botões touch-friendly em mobile" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Large › deve estar acessível em mobile large (414x896)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Large › deve renderizar pet list em mobile large" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Tablet › deve estar acessível em tablet (768x1024)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Tablet › deve mostrar layout grid em tablet" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Desktop Large › deve estar acessível em desktop large (2560x1440)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Desktop Large › deve renderizar múltiplos pets em desktop large" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Imagens e Performance › deve ter imagens otimizadas" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Imagens e Performance › deve não ter horizontal scroll em nenhum viewport" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/tablet.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="webkit" tests="8" failures="0" skipped="8" time="0" errors="0">
+<testcase name="Tablet (iPad Pro) › deve mostrar layout tablet otimizado" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve ter navegação sidebar em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve exibir corretamente em 1024x1366" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve permitir interações touch em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve ter botões touch-friendly em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve permitir scroll horizontal da grid em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve exibir imagens otimizadas em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve permitir completar fluxo em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/adoption-workflow.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="Mobile Chrome" tests="4" failures="0" skipped="4" time="0" errors="0">
+<testcase name="Fluxo Completo de Adoção › deve manifestar interesse em um pet disponível" classname="specs/adoption-workflow.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Fluxo Completo de Adoção › deve preencher e submeter formulário de adoção" classname="specs/adoption-workflow.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Fluxo Completo de Adoção › deve permitir Pet Owner revisar e aprovar adoção" classname="specs/adoption-workflow.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Fluxo Completo de Adoção › deve permitir Pet Owner rejeitar adoção com motivo" classname="specs/adoption-workflow.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/authentication.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="Mobile Chrome" tests="8" failures="0" skipped="8" time="0" errors="0">
+<testcase name="Autenticação - Fluxo Completo › deve registrar novo usuário com email e senha" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve fazer login com credenciais válidas" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve rejeitar login com credenciais inválidas" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve validar força da senha durante registro" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve fazer logout e redirecionar para home" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve redirecionar para login ao acessar página protegida sem autenticação" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve manter sessão após refresh da página" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve mostrar email do usuário na sessão" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/dashboard.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="Mobile Chrome" tests="15" failures="0" skipped="15" time="0" errors="0">
+<testcase name="Dashboard - Adotante › deve exibir dashboard do adotante" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Adotante › deve mostrar seção de pets favoritos" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Adotante › deve mostrar seção de solicitações de adoção" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Adotante › deve permitir editar perfil do adotante" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Adotante › deve exibir estatísticas de atividade" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve exibir dashboard do proprietário" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve mostrar seção de pets cadastrados" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve mostrar seção de solicitações recebidas" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve permitir criar novo pet do dashboard" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve permitir editar perfil" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve exibir estatísticas de adoção" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve mostrar atividade recente" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Editar Perfil › deve permitir editar nome do usuário" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Editar Perfil › deve permitir editar avatar/foto" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Editar Perfil › deve validar dados antes de salvar" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/mobile.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="Mobile Chrome" tests="7" failures="0" skipped="7" time="0" errors="0">
+<testcase name="Mobile (Pixel 5) › deve permitir deslizar em lista de pets" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve permitir tap em botão de interesse" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve permitir scrolling vertical sem problemas" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve fechar menu em tap fora" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve completar fluxo de login em mobile" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve ter teclado otimizado para mobile" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve exibir corretamente em 375x667" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/pet-management.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="Mobile Chrome" tests="6" failures="0" skipped="6" time="0" errors="0">
+<testcase name="Gerenciamento de Pets › deve criar novo pet com todos os campos obrigatórios" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve validar campos obrigatórios antes de criar pet" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve editar informações do pet" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve mudar status do pet" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve manter campos opcionais" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve mostrar apenas pets disponíveis no catálogo público" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/responsiveness.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="Mobile Chrome" tests="14" failures="0" skipped="14" time="0" errors="0">
+<testcase name="Responsividade - Desktop › deve estar acessível em desktop (1920x1080)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Desktop › deve renderizar catálogo de pets em desktop" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Small › deve estar acessível em mobile small (375x667)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Small › deve permitir completar fluxo de registro em mobile" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Small › deve ter navegação apropriada em mobile small" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Small › deve ter botões touch-friendly em mobile" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Large › deve estar acessível em mobile large (414x896)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Large › deve renderizar pet list em mobile large" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Tablet › deve estar acessível em tablet (768x1024)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Tablet › deve mostrar layout grid em tablet" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Desktop Large › deve estar acessível em desktop large (2560x1440)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Desktop Large › deve renderizar múltiplos pets em desktop large" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Imagens e Performance › deve ter imagens otimizadas" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Imagens e Performance › deve não ter horizontal scroll em nenhum viewport" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/tablet.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="Mobile Chrome" tests="8" failures="0" skipped="8" time="0" errors="0">
+<testcase name="Tablet (iPad Pro) › deve mostrar layout tablet otimizado" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve ter navegação sidebar em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve exibir corretamente em 1024x1366" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve permitir interações touch em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve ter botões touch-friendly em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve permitir scroll horizontal da grid em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve exibir imagens otimizadas em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve permitir completar fluxo em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/adoption-workflow.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="Mobile Safari" tests="4" failures="0" skipped="4" time="0" errors="0">
+<testcase name="Fluxo Completo de Adoção › deve manifestar interesse em um pet disponível" classname="specs/adoption-workflow.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Fluxo Completo de Adoção › deve preencher e submeter formulário de adoção" classname="specs/adoption-workflow.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Fluxo Completo de Adoção › deve permitir Pet Owner revisar e aprovar adoção" classname="specs/adoption-workflow.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Fluxo Completo de Adoção › deve permitir Pet Owner rejeitar adoção com motivo" classname="specs/adoption-workflow.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/authentication.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="Mobile Safari" tests="8" failures="0" skipped="8" time="0" errors="0">
+<testcase name="Autenticação - Fluxo Completo › deve registrar novo usuário com email e senha" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve fazer login com credenciais válidas" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve rejeitar login com credenciais inválidas" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve validar força da senha durante registro" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve fazer logout e redirecionar para home" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve redirecionar para login ao acessar página protegida sem autenticação" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve manter sessão após refresh da página" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve mostrar email do usuário na sessão" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/dashboard.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="Mobile Safari" tests="15" failures="0" skipped="15" time="0" errors="0">
+<testcase name="Dashboard - Adotante › deve exibir dashboard do adotante" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Adotante › deve mostrar seção de pets favoritos" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Adotante › deve mostrar seção de solicitações de adoção" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Adotante › deve permitir editar perfil do adotante" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Adotante › deve exibir estatísticas de atividade" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve exibir dashboard do proprietário" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve mostrar seção de pets cadastrados" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve mostrar seção de solicitações recebidas" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve permitir criar novo pet do dashboard" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve permitir editar perfil" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve exibir estatísticas de adoção" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve mostrar atividade recente" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Editar Perfil › deve permitir editar nome do usuário" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Editar Perfil › deve permitir editar avatar/foto" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Editar Perfil › deve validar dados antes de salvar" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/mobile.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="Mobile Safari" tests="7" failures="0" skipped="7" time="0" errors="0">
+<testcase name="Mobile (Pixel 5) › deve permitir deslizar em lista de pets" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve permitir tap em botão de interesse" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve permitir scrolling vertical sem problemas" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve fechar menu em tap fora" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve completar fluxo de login em mobile" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve ter teclado otimizado para mobile" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve exibir corretamente em 375x667" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/pet-management.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="Mobile Safari" tests="6" failures="0" skipped="6" time="0" errors="0">
+<testcase name="Gerenciamento de Pets › deve criar novo pet com todos os campos obrigatórios" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve validar campos obrigatórios antes de criar pet" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve editar informações do pet" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve mudar status do pet" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve manter campos opcionais" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve mostrar apenas pets disponíveis no catálogo público" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/responsiveness.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="Mobile Safari" tests="14" failures="0" skipped="14" time="0" errors="0">
+<testcase name="Responsividade - Desktop › deve estar acessível em desktop (1920x1080)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Desktop › deve renderizar catálogo de pets em desktop" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Small › deve estar acessível em mobile small (375x667)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Small › deve permitir completar fluxo de registro em mobile" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Small › deve ter navegação apropriada em mobile small" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Small › deve ter botões touch-friendly em mobile" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Large › deve estar acessível em mobile large (414x896)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Large › deve renderizar pet list em mobile large" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Tablet › deve estar acessível em tablet (768x1024)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Tablet › deve mostrar layout grid em tablet" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Desktop Large › deve estar acessível em desktop large (2560x1440)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Desktop Large › deve renderizar múltiplos pets em desktop large" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Imagens e Performance › deve ter imagens otimizadas" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Imagens e Performance › deve não ter horizontal scroll em nenhum viewport" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/tablet.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="Mobile Safari" tests="8" failures="0" skipped="8" time="0" errors="0">
+<testcase name="Tablet (iPad Pro) › deve mostrar layout tablet otimizado" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve ter navegação sidebar em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve exibir corretamente em 1024x1366" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve permitir interações touch em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve ter botões touch-friendly em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve permitir scroll horizontal da grid em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve exibir imagens otimizadas em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve permitir completar fluxo em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/adoption-workflow.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="iPad" tests="4" failures="0" skipped="4" time="0" errors="0">
+<testcase name="Fluxo Completo de Adoção › deve manifestar interesse em um pet disponível" classname="specs/adoption-workflow.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Fluxo Completo de Adoção › deve preencher e submeter formulário de adoção" classname="specs/adoption-workflow.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Fluxo Completo de Adoção › deve permitir Pet Owner revisar e aprovar adoção" classname="specs/adoption-workflow.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Fluxo Completo de Adoção › deve permitir Pet Owner rejeitar adoção com motivo" classname="specs/adoption-workflow.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/authentication.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="iPad" tests="8" failures="0" skipped="8" time="0" errors="0">
+<testcase name="Autenticação - Fluxo Completo › deve registrar novo usuário com email e senha" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve fazer login com credenciais válidas" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve rejeitar login com credenciais inválidas" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve validar força da senha durante registro" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve fazer logout e redirecionar para home" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve redirecionar para login ao acessar página protegida sem autenticação" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve manter sessão após refresh da página" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Autenticação - Fluxo Completo › deve mostrar email do usuário na sessão" classname="specs/authentication.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/dashboard.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="iPad" tests="15" failures="0" skipped="15" time="0" errors="0">
+<testcase name="Dashboard - Adotante › deve exibir dashboard do adotante" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Adotante › deve mostrar seção de pets favoritos" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Adotante › deve mostrar seção de solicitações de adoção" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Adotante › deve permitir editar perfil do adotante" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Adotante › deve exibir estatísticas de atividade" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve exibir dashboard do proprietário" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve mostrar seção de pets cadastrados" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve mostrar seção de solicitações recebidas" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve permitir criar novo pet do dashboard" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve permitir editar perfil" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve exibir estatísticas de adoção" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard - Proprietário de Pet › deve mostrar atividade recente" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Editar Perfil › deve permitir editar nome do usuário" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Editar Perfil › deve permitir editar avatar/foto" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Editar Perfil › deve validar dados antes de salvar" classname="specs/dashboard.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/mobile.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="iPad" tests="7" failures="0" skipped="7" time="0" errors="0">
+<testcase name="Mobile (Pixel 5) › deve permitir deslizar em lista de pets" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve permitir tap em botão de interesse" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve permitir scrolling vertical sem problemas" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve fechar menu em tap fora" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve completar fluxo de login em mobile" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve ter teclado otimizado para mobile" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Mobile (Pixel 5) › deve exibir corretamente em 375x667" classname="specs/mobile.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/pet-management.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="iPad" tests="6" failures="0" skipped="6" time="0" errors="0">
+<testcase name="Gerenciamento de Pets › deve criar novo pet com todos os campos obrigatórios" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve validar campos obrigatórios antes de criar pet" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve editar informações do pet" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve mudar status do pet" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve manter campos opcionais" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Gerenciamento de Pets › deve mostrar apenas pets disponíveis no catálogo público" classname="specs/pet-management.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/responsiveness.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="iPad" tests="14" failures="0" skipped="14" time="0" errors="0">
+<testcase name="Responsividade - Desktop › deve estar acessível em desktop (1920x1080)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Desktop › deve renderizar catálogo de pets em desktop" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Small › deve estar acessível em mobile small (375x667)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Small › deve permitir completar fluxo de registro em mobile" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Small › deve ter navegação apropriada em mobile small" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Small › deve ter botões touch-friendly em mobile" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Large › deve estar acessível em mobile large (414x896)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Mobile Large › deve renderizar pet list em mobile large" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Tablet › deve estar acessível em tablet (768x1024)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Tablet › deve mostrar layout grid em tablet" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Desktop Large › deve estar acessível em desktop large (2560x1440)" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Responsividade - Desktop Large › deve renderizar múltiplos pets em desktop large" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Imagens e Performance › deve ter imagens otimizadas" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Imagens e Performance › deve não ter horizontal scroll em nenhum viewport" classname="specs/responsiveness.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="specs/tablet.spec.js" timestamp="2026-08-26T23:08:53.266Z" hostname="iPad" tests="8" failures="0" skipped="8" time="0" errors="0">
+<testcase name="Tablet (iPad Pro) › deve mostrar layout tablet otimizado" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve ter navegação sidebar em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve exibir corretamente em 1024x1366" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve permitir interações touch em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve ter botões touch-friendly em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve permitir scroll horizontal da grid em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve exibir imagens otimizadas em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Tablet (iPad Pro) › deve permitir completar fluxo em tablet" classname="specs/tablet.spec.js">
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+</testsuites>

@@ -18,11 +18,16 @@ const Input = forwardRef(({
   placeholder,
   type = 'text',
   className,
+  leftIcon,      // Extract these
+  rightElement,  // Extract these
   ...props 
 }, ref) => {
   const [isHydrated, setIsHydrated] = useState(false);
   const generatedId = useId();
   const inputId = props.id || (isHydrated ? generatedId : 'input-ssr');
+  
+  // Use leftIcon if provided, otherwise fall back to icon
+  const displayIcon = icon || leftIcon;
 
   useEffect(() => {
     setIsHydrated(true);
@@ -34,7 +39,7 @@ const Input = forwardRef(({
       {
         [styles.fullWidth]: fullWidth,
         [styles.hasError]: error,
-        [styles.hasIcon]: icon
+        [styles.hasIcon]: displayIcon
       },
       className
     )}>
@@ -46,8 +51,8 @@ const Input = forwardRef(({
       )}
       
       <div className={styles.inputWrapper}>
-        {icon && iconPosition === 'left' && (
-          <div className={styles.iconLeft}>{icon}</div>
+        {displayIcon && iconPosition === 'left' && (
+          <div className={styles.iconLeft}>{displayIcon}</div>
         )}
         
         <input
@@ -62,15 +67,15 @@ const Input = forwardRef(({
             styles[variant],
             styles[size],
             {
-              [styles.withIconLeft]: icon && iconPosition === 'left',
-              [styles.withIconRight]: icon && iconPosition === 'right'
+              [styles.withIconLeft]: displayIcon && iconPosition === 'left',
+              [styles.withIconRight]: displayIcon && iconPosition === 'right'
             }
           )}
           {...props}
         />
         
-        {icon && iconPosition === 'right' && (
-          <div className={styles.iconRight}>{icon}</div>
+        {displayIcon && iconPosition === 'right' && (
+          <div className={styles.iconRight}>{displayIcon}</div>
         )}
       </div>
       

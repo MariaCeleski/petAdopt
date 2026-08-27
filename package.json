@@ -19,8 +19,17 @@
     "db:test": "node scripts/test-connection-pooling.js",
     "db:validate": "node scripts/validate-prisma.js",
     "postinstall": "prisma generate",
-    "test": "echo \"No tests configured yet\"",
-    "test:watch": "echo \"No tests configured yet\"",
+    "test": "echo \"No unit tests configured yet\"",
+    "test:watch": "echo \"No unit tests configured yet\"",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:debug": "playwright test --debug",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:report": "playwright show-report",
+    "test:e2e:chromium": "playwright test --project=chromium",
+    "test:e2e:firefox": "playwright test --project=firefox",
+    "test:e2e:webkit": "playwright test --project=webkit",
+    "test:e2e:mobile": "playwright test --project=\"Mobile Chrome\" --project=\"Mobile Safari\"",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
@@ -47,6 +56,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@playwright/test": "^1.62.1",
     "@types/bcryptjs": "^2.4.6",
     "@types/nodemailer": "^8.0.1",
     "@types/pg": "^8.23.1",

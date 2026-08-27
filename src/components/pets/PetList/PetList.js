@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useSession } from 'next-auth/react';
+import { usePetInfiniteScroll } from '@/hooks';
 import { PetCard } from '@/components/pets';
 import { Button, LoadingSkeleton } from '@/components/ui';
 import { 
@@ -25,162 +26,32 @@ export default function PetList({
   favoritePetIds = [],
   className,
   enableInfiniteScroll = true,
-  pageSize = 12
+  pageSize = 12,
+  apiEndpoint = '/api/pets'
 }) {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const { data: session } = useSession();
   
-  const [pets, setPets] = useState(initialPets);
-  const [pagination, setPagination] = useState(initialPagination);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isLoadingMore, setIsLoadingMore] = useState(false);
-  const [error, setError] = useState(null);
-  const [hasMore, setHasMore] = useState(
-    initialPagination?.hasNextPage ?? false
-  );
-  
-  const observerRef = useRef(null);
-  const loadMoreTriggerRef = useRef(null);
-
-  // Build current filters from URL params
-  const getCurrentFilters = useCallback(() => {
-    const currentFilters = { ...filters };
-    
-    // Get filters from URL
-    const urlFilters = {
-      species: searchParams.get('species'),
-      size: searchParams.get('size'),
-      gender: searchParams.get('gender'),
-      location: searchParams.get('location'),
-      search: searchParams.get('search') || searchParams.get('q'),
-      page: parseInt(searchParams.get('page')) || 1,
-      limit: parseInt(searchParams.get('limit')) || pageSize
-    };
-    
-    // Merge with provided filters
-    Object.keys(urlFilters).forEach(key => {
-      if (urlFilters[key] !== null && urlFilters[key] !== '') {
-        currentFilters[key] = urlFilters[key];
-      }
-    });
-    
-    return currentFilters;
-  }, [filters, searchParams, pageSize]);
-
-  // Fetch pets from API
-  const fetchPets = useCallback(async (currentFilters, append = false) => {
-    try {
-      const queryParams = new URLSearchParams();
-      
-      Object.keys(currentFilters).forEach(key => {
-        if (currentFilters[key] !== null && 
-            currentFilters[key] !== '' && 
-            currentFilters[key] !== undefined) {
-          queryParams.set(key, currentFilters[key].toString());
-        }
-      });
-
-      const response = await fetch(`/api/pets?${queryParams.toString()}`);
-      
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Erro ao carregar pets');
-      }
-      
-      const data = await response.json();
-      
-      if (append) {
-        setPets(prev => [...prev, ...data.pets]);
-      } else {
-        setPets(data.pets);
-      }
-      
-      setPagination(data.pagination);
-      setHasMore(data.pagination.hasNextPage);
-      setError(null);
-      
-      return data;
-      
-    } catch (err) {
-      console.error('Error fetching pets:', err);
-      setError(err.message);
-      throw err;
-    }
-  }, []);
-
-  // Load pets with current filters
-  const loadPets = useCallback(async (append = false) => {
-    if ((isLoading || isLoadingMore) && append) return;
-    
-    const currentFilters = getCurrentFilters();
-    
-    if (append) {
-      setIsLoadingMore(true);
-      currentFilters.page = (pagination?.page || 1) + 1;
-    } else {
-      setIsLoading(true);
-      currentFilters.page = 1;
-    }
-
-    try {
-      await fetchPets(currentFilters, append);
-    } catch (err) {
-      // Error is already set in fetchPets
-    } finally {
-      if (append) {
-        setIsLoadingMore(false);
-      } else {
-        setIsLoading(false);
-      }
-    }
-  }, [getCurrentFilters, fetchPets, pagination?.page, isLoading, isLoadingMore]);
-
-  // Load more pets (infinite scroll)
-  const loadMorePets = useCallback(() => {
-    if (hasMore && !isLoadingMore && !isLoading) {
-      loadPets(true);
-    }
-  }, [hasMore, isLoadingMore, isLoading, loadPets]);
-
-  // Refresh pets list
-  const refreshPets = useCallback(() => {
-    loadPets(false);
-  }, [loadPets]);
-
-  // Set up intersection observer for infinite scroll
-  useEffect(() => {
-    if (!enableInfiniteScroll || !loadMoreTriggerRef.current) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const [entry] = entries;
-        if (entry.isIntersecting && hasMore && !isLoadingMore && !isLoading) {
-          loadMorePets();
-        }
-      },
-      {
-        threshold: 0.1,
-        rootMargin: '100px'
-      }
-    );
-
-    observer.observe(loadMoreTriggerRef.current);
-    observerRef.current = observer;
-
-    return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
-    };
-  }, [enableInfiniteScroll, hasMore, isLoadingMore, isLoading, loadMorePets]);
-
-  // Load pets when filters change
-  useEffect(() => {
-    if (initialPets.length === 0) {
-      loadPets(false);
-    }
-  }, [searchParams]); // Re-run when URL changes
+  // Use the specialized pet infinite scroll hook
+  const {
+    data: pets,
+    pagination,
+    isLoading,
+    isLoadingMore,
+    error,
+    hasMore,
+    isEmpty,
+    refresh: refreshPets,
+    triggerRef: loadMoreTriggerRef,
+    canLoadMore
+  } = usePetInfiniteScroll({
+    initialData: initialPets,
+    initialPagination,
+    filters,
+    pageSize,
+    apiEndpoint,
+    enabled: enableInfiniteScroll
+  });
 
   // Handle pet interest click
   const handleInterestClick = useCallback((pet) => {
@@ -295,7 +166,7 @@ export default function PetList({
   }
 
   // Show empty state
-  if (!isLoading && pets.length === 0 && !error) {
+  if (isEmpty) {
     return (
       <div className={clsx(styles.petList, className)}>
         {renderEmptyState()}
@@ -370,7 +241,7 @@ export default function PetList({
       )}
 
       {/* Infinite Scroll Trigger */}
-      {enableInfiniteScroll && hasMore && !isLoadingMore && (
+      {enableInfiniteScroll && canLoadMore && (
         <div 
           ref={loadMoreTriggerRef}
           className={styles.infiniteScrollTrigger}
@@ -383,7 +254,7 @@ export default function PetList({
           <Button
             variant="outline"
             size="large"
-            onClick={loadMorePets}
+            onClick={refreshPets} // This will be handled by the hook
             disabled={isLoadingMore}
             loading={isLoadingMore}
             className={styles.loadMoreButton}

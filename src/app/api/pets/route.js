@@ -35,13 +35,24 @@ export async function GET(request) {
     }
 
     const { species, size, gender, location, search, page, limit } = validation.data;
+    const shelterId = searchParams.get('shelterId');
+    const status = searchParams.get('status') || 'AVAILABLE';
     const skip = (page - 1) * limit;
 
     // Build where clause for filtering
-    const whereClause = {
-      // Only show available pets in public listings (Requirement 4.1)
-      status: 'AVAILABLE'
-    };
+    const whereClause = {};
+
+    // Apply status filter - allow filtering by status or default to AVAILABLE
+    if (status === 'ALL') {
+      // Don't filter by status
+    } else {
+      whereClause.status = status || 'AVAILABLE';
+    }
+
+    // Filter by shelter if provided (Requirement 11.5)
+    if (shelterId) {
+      whereClause.shelterId = shelterId;
+    }
 
     // Apply species filter (Requirement 4.2)
     if (species) {
@@ -287,6 +298,30 @@ export async function POST(request) {
       owner: pet.owner,
       shelter: pet.shelter
     };
+
+    // Trigger matching pet alerts asynchronously (Requirement 8.3)
+    // Send a request to check if new pet matches any adopter preferences
+    try {
+      const matchingCheckUrl = `${process.env.APP_URL || 'http://localhost:3000'}/api/notifications/check-matching-pets`;
+      const cronSecret = process.env.CRON_SECRET || 'development-secret';
+      
+      // Fire and forget - don't wait for response
+      fetch(matchingCheckUrl, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${cronSecret}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          petId: pet.id
+        })
+      }).catch(error => {
+        // Log error but don't fail pet creation
+        console.error('[MATCHING] Failed to trigger matching check for new pet:', error.message);
+      });
+    } catch (error) {
+      console.error('[MATCHING] Error triggering matching check:', error.message);
+    }
 
     return NextResponse.json({
       message: 'Pet created successfully',

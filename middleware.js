@@ -1,12 +1,49 @@
 import { withAuth } from 'next-auth/middleware';
 import { NextResponse } from 'next/server';
+import { applySecurityHeaders } from '@/lib/security/headers.js';
+import { applyRateLimitHeaders, getClientIp, createRateLimitKey, rateLimiter } from '@/lib/rate-limiting/index.js';
 
 export default withAuth(
-  function middleware(req) {
+  async function middleware(req) {
     const { pathname } = req.nextUrl;
     const token = req.nextauth.token;
 
-    // Páginas públicas que não requerem autenticação
+    // Verificar rate limit para APIs
+    if (pathname.startsWith('/api/')) {
+      const clientId = getClientIp(req);
+      const key = createRateLimitKey(clientId);
+
+      // Determinar tipo de rate limit baseado na rota
+      let limitType = 'general';
+      if (pathname.includes('/auth/')) limitType = 'auth';
+      else if (pathname.includes('/upload')) limitType = 'upload';
+      else if (pathname.includes('/pets') && ['POST', 'PUT', 'PATCH'].includes(req.method)) limitType = 'petCreate';
+      else if (pathname.includes('/pets') && req.method === 'DELETE') limitType = 'petModify';
+      else if (pathname.includes('/adoptions')) limitType = 'adoption';
+      else if (pathname.includes('/pets') && req.method === 'GET') limitType = 'publicGet';
+
+      const result = await rateLimiter.checkLimit(key, limitType);
+      
+      if (!result.success) {
+        const response = new NextResponse(
+          JSON.stringify({
+            error: 'Muitas requisições. Tente novamente mais tarde.',
+            code: 'RATE_LIMIT_EXCEEDED',
+            retryAfter: result.retryAfter,
+          }),
+          { status: 429 }
+        );
+        
+        response.headers.set('Retry-After', result.retryAfter.toString());
+        Object.entries(result.headers).forEach(([key, value]) => {
+          response.headers.set(key, value);
+        });
+        
+        return response;
+      }
+    }
+
+    // Aplicar security headers
     const publicRoutes = [
       '/',
       '/pets',

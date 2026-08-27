@@ -7,6 +7,7 @@ export { default as Card } from './Card';
 export { default as Badge } from './Badge';
 export { default as Avatar } from './Avatar';
 export { default as LoadingSkeleton } from './LoadingSkeleton';
+export { default as OptimizedImage } from './OptimizedImage';
 export { 
   default as ErrorBoundary,
   withErrorBoundary,

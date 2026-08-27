@@ -2,7 +2,7 @@
  * Image upload validation utilities
  */
 
-import { IMAGE_CONSTANTS } from '../cloudinary.js';
+import { IMAGE_CONSTANTS } from './constants.js';
 
 /**
  * Validate image file client-side before upload

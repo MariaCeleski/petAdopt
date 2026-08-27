@@ -1,9 +1,7 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { Card, Button, Badge } from '@/components/ui';
+import { Card, Button, Badge, OptimizedImage } from '@/components/ui';
 import { HeartIcon, MapPinIcon, CalendarIcon, UserIcon } from 'lucide-react';
 import styles from './PetCard.module.css';
 import { clsx } from 'clsx';
@@ -18,9 +16,6 @@ export default function PetCard({
   isFavorite = false,
   ...props 
 }) {
-  const [imageError, setImageError] = useState(false);
-  const [isImageLoading, setIsImageLoading] = useState(true);
-
   const primaryImage = pet.images?.[0] || '/images/pet-placeholder.jpg';
   const isAvailable = pet.status === 'AVAILABLE';
 
@@ -90,26 +85,17 @@ export default function PetCard({
     >
       <Link href={`/pets/${pet.id}`} className={styles.cardLink}>
         <div className={styles.imageContainer}>
-          {isImageLoading && (
-            <div className={styles.imagePlaceholder}>
-              <div className={styles.loadingSkeleton} />
-            </div>
-          )}
-          
-          <Image
-            src={imageError ? '/images/pet-placeholder.jpg' : primaryImage}
+          <OptimizedImage
+            src={primaryImage}
             alt={`${pet.name} - ${pet.breed}`}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className={clsx(styles.petImage, {
-              [styles.loaded]: !isImageLoading
-            })}
-            onLoad={() => setIsImageLoading(false)}
-            onError={() => {
-              setImageError(true);
-              setIsImageLoading(false);
-            }}
+            className={styles.petImage}
             priority={variant === 'featured'}
+            quality={variant === 'featured' ? 90 : 85}
+            zoomOnHover
+            fadeIn
+            fallbackSrc="/images/pet-placeholder.jpg"
           />
           
           <div className={styles.imageOverlay}>

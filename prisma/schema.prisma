@@ -24,6 +24,8 @@ model User {
   name          String
   avatar        String?
   password      String?   // Nullable for OAuth users
+  phone         String?   // User phone number (optional)
+  location      String?   // User location/city (optional)
   type          UserType  @default(ADOPTER)
   emailVerified DateTime?
   resetToken    String?   // Token for password reset
@@ -37,6 +39,8 @@ model User {
   shelter       Shelter?
   accounts      Account[] // Para NextAuth
   sessions      Session[] // Para NextAuth
+  emailPreference EmailPreference?
+  searchPreference AdopterSearchPreference?
   
   @@map("users")
 }
@@ -162,6 +166,78 @@ model Shelter {
   pets        Pet[]
   
   @@map("shelters")
+}
+
+// ========================================
+// EMAIL PREFERENCE MODELS
+// ========================================
+
+model EmailPreference {
+  id                        String    @id @default(cuid())
+  userId                    String    @unique
+  adoptionNotifications     Boolean   @default(true)
+  statusChangeNotifications Boolean   @default(true)
+  petMatchingAlerts         Boolean   @default(true)
+  newsletter                Boolean   @default(true)
+  unsubscribedAll           Boolean   @default(false)
+  unsubscribeToken          String    @unique
+  createdAt                 DateTime  @default(now())
+  updatedAt                 DateTime  @updatedAt
+  
+  // Relacionamentos
+  user                      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([userId])
+  @@index([unsubscribeToken])
+  @@map("email_preferences")
+}
+
+// ========================================
+// ADOPTER SEARCH PREFERENCE MODELS
+// ========================================
+
+model AdopterSearchPreference {
+  id                  String      @id @default(cuid())
+  userId              String      @unique
+  species             Species?    // Preferred species (DOG, CAT, or null for both)
+  sizePreferences     String      // JSON array of sizes (SMALL, MEDIUM, LARGE)
+  minAge              String?     // Min age preference
+  maxAge              String?     // Max age preference
+  genderPreference    Gender?     // MALE, FEMALE, or null for both
+  personalityTraits   String?     // JSON array of personality traits
+  location            String?     // Preferred location/city
+  searchRadius        Int?        // Search radius in km
+  isActive            Boolean     @default(true)
+  createdAt           DateTime    @default(now())
+  updatedAt           DateTime    @updatedAt
+  
+  // Relacionamentos
+  user                User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([userId])
+  @@index([isActive])
+  @@map("adopter_search_preferences")
+}
+
+// ========================================
+// NOTIFICATION LOG MODELS
+// ========================================
+
+model NotificationLog {
+  id                  String      @id @default(cuid())
+  userId              String
+  petId               String
+  notificationType    String      // 'adoption_request', 'status_change', 'pet_matching'
+  sentAt              DateTime    @default(now())
+  deliveryStatus      String      @default("sent")  // sent, failed, bounced
+  email               String      // Email address where notification was sent
+  
+  @@index([userId])
+  @@index([petId])
+  @@index([notificationType])
+  @@index([sentAt])
+  @@unique([userId, petId, notificationType])  // Prevent duplicate matching alerts for same pet
+  @@map("notification_logs")
 }
 
 // ========================================

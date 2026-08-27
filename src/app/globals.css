@@ -15,7 +15,7 @@ html {
 body {
   font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
   line-height: 1.6;
-  color: var(--neutral-dark);
+  color: var(--neutral-medium);
   background: var(--neutral-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

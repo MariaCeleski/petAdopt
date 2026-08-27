@@ -171,6 +171,15 @@ export const authOptions = {
       
       if (isNewUser) {
         console.log(`New user registered: ${user.email}`);
+        
+        // Create email preferences for new user
+        try {
+          const { getOrCreateEmailPreferences } = await import('./email/preferences');
+          await getOrCreateEmailPreferences(user.id);
+          console.log(`Email preferences created for user ${user.id}`);
+        } catch (error) {
+          console.error(`Failed to create email preferences for user ${user.id}:`, error);
+        }
       }
     },
     async signOut({ token }) {

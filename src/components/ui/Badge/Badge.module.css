@@ -32,7 +32,7 @@
 
 .success {
   background: var(--primary-green);
-  color: var(--neutral-white);
+  color: #2ca25e;
   border: 1px solid var(--primary-green);
 }
 

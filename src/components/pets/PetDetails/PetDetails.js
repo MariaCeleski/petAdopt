@@ -9,8 +9,10 @@ import {
   Card, 
   Badge, 
   Modal,
-  Avatar 
+  Avatar,
+  OptimizedImage 
 } from '@/components/ui';
+import { ShelterInfo } from '@/components/shelter';
 import { 
   HeartIcon, 
   MapPinIcon, 
@@ -46,6 +48,10 @@ export default function PetDetails({
   const [showReportModal, setShowReportModal] = useState(false);
   const [imageError, setImageError] = useState({});
   const [isImageLoading, setIsImageLoading] = useState({});
+  const [galleryZoom, setGalleryZoom] = useState(1);
+  const [galleryPosition, setGalleryPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
 
   const isAvailable = pet.status === 'AVAILABLE';
   const isOwner = session?.user?.id === pet.ownerId;
@@ -84,6 +90,44 @@ export default function PetDetails({
   const handleImageClick = (index) => {
     setCurrentImageIndex(index);
     setShowGalleryModal(true);
+    setGalleryZoom(1);
+    setGalleryPosition({ x: 0, y: 0 });
+  };
+
+  const handleGalleryWheel = (e) => {
+    if (showGalleryModal) {
+      e.preventDefault();
+      const newZoom = Math.min(Math.max(galleryZoom + (e.deltaY > 0 ? -0.1 : 0.1), 0.5), 3);
+      setGalleryZoom(newZoom);
+      
+      // Reset position when zooming out completely
+      if (newZoom === 1) {
+        setGalleryPosition({ x: 0, y: 0 });
+      }
+    }
+  };
+
+  const handleGalleryMouseDown = (e) => {
+    if (galleryZoom > 1) {
+      setIsDragging(true);
+      setDragStart({
+        x: e.clientX - galleryPosition.x,
+        y: e.clientY - galleryPosition.y
+      });
+    }
+  };
+
+  const handleGalleryMouseMove = (e) => {
+    if (isDragging && galleryZoom > 1) {
+      setGalleryPosition({
+        x: e.clientX - dragStart.x,
+        y: e.clientY - dragStart.y
+      });
+    }
+  };
+
+  const handleGalleryMouseUp = () => {
+    setIsDragging(false);
   };
 
   const handleInterest = () => {
@@ -201,19 +245,18 @@ export default function PetDetails({
                   </div>
                 )}
                 
-                <Image
-                  src={imageError[currentImageIndex] 
-                    ? '/images/pet-placeholder.jpg' 
-                    : pet.images[currentImageIndex]
-                  }
+                <OptimizedImage
+                  src={pet.images[currentImageIndex]}
                   alt={`${pet.name} - Foto ${currentImageIndex + 1}`}
                   fill
                   sizes="(max-width: 768px) 100vw, 60vw"
-                  className={clsx(styles.mainImage, {
-                    [styles.loaded]: !isImageLoading[currentImageIndex]
-                  })}
+                  className={styles.mainImage}
                   onClick={() => handleImageClick(currentImageIndex)}
                   priority
+                  quality={90}
+                  zoomOnHover
+                  fadeIn
+                  fallbackSrc="/images/pet-placeholder.jpg"
                 />
                 
                 {/* Navigation arrows */}
@@ -287,12 +330,14 @@ export default function PetDetails({
                       })}
                       onClick={() => setCurrentImageIndex(index)}
                     >
-                      <Image
-                        src={imageError[index] ? '/images/pet-placeholder.jpg' : imageUrl}
+                      <OptimizedImage
+                        src={imageUrl}
                         alt={`${pet.name} - Miniatura ${index + 1}`}
                         fill
                         sizes="100px"
                         className={styles.thumbnailImage}
+                        quality={75}
+                        fallbackSrc="/images/pet-placeholder.jpg"
                       />
                     </button>
                   ))}
@@ -479,6 +524,25 @@ export default function PetDetails({
             </Card.Body>
           </Card>
 
+          {/* Shelter Information with Adoption Stats */}
+          {pet.shelter && (
+            <ShelterInfo 
+              shelter={{
+                id: pet.shelter.id || '',
+                name: pet.shelter.name,
+                city: pet.shelter.city,
+                state: pet.shelter.state,
+                logo: pet.shelter.logo,
+                images: pet.shelter.images,
+                phone: pet.shelter.phone,
+                email: pet.shelter.email,
+                website: pet.shelter.website,
+                description: pet.shelter.description,
+                isVerified: pet.shelter.isVerified
+              }}
+            />
+          )}
+
           {/* Success Stories */}
           {successStories && successStories.length > 0 && (
             <Card className={styles.successStoriesCard}>
@@ -561,24 +625,49 @@ export default function PetDetails({
       {/* Gallery Modal */}
       <Modal
         isOpen={showGalleryModal}
-        onClose={() => setShowGalleryModal(false)}
+        onClose={() => {
+          setShowGalleryModal(false);
+          setGalleryZoom(1);
+          setGalleryPosition({ x: 0, y: 0 });
+        }}
         title={`${pet.name} - Foto ${currentImageIndex + 1} de ${pet.images?.length || 0}`}
         size="full"
         className={styles.galleryModal}
       >
         {pet.images && pet.images[currentImageIndex] && (
-          <div className={styles.modalContent}>
-            <Image
-              src={imageError[currentImageIndex] 
-                ? '/images/pet-placeholder.jpg' 
-                : pet.images[currentImageIndex]
-              }
-              alt={`${pet.name} - Foto ${currentImageIndex + 1}`}
-              fill
-              sizes="100vw"
-              className={styles.modalImage}
-              priority
-            />
+          <div 
+            className={styles.modalContent}
+            onWheel={handleGalleryWheel}
+            onMouseDown={handleGalleryMouseDown}
+            onMouseMove={handleGalleryMouseMove}
+            onMouseUp={handleGalleryMouseUp}
+            onMouseLeave={handleGalleryMouseUp}
+            style={{ 
+              cursor: galleryZoom > 1 ? (isDragging ? 'grabbing' : 'grab') : 'default'
+            }}
+          >
+            <div
+              className={styles.zoomContainer}
+              style={{
+                transform: `scale(${galleryZoom}) translate(${galleryPosition.x / galleryZoom}px, ${galleryPosition.y / galleryZoom}px)`,
+                transition: isDragging ? 'none' : 'transform 0.2s ease'
+              }}
+            >
+              <Image
+                src={imageError[currentImageIndex] 
+                  ? '/images/pet-placeholder.jpg' 
+                  : pet.images[currentImageIndex]
+                }
+                alt={`${pet.name} - Foto ${currentImageIndex + 1}`}
+                fill
+                sizes="100vw"
+                className={styles.modalImage}
+                priority
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R+kXoiijm3zHmLiIcBOKhvpgRPrXHTnHIASZuoAJgPdv/X4k0l1KN/LJGYlM="
+                quality={95}
+              />
+            </div>
             
             {pet.images.length > 1 && (
               <>
@@ -598,6 +687,67 @@ export default function PetDetails({
                   <ChevronRightIcon size={32} />
                 </button>
               </>
+            )}
+            
+            {/* Zoom controls */}
+            <div className={styles.zoomControls}>
+              <button
+                className={styles.zoomButton}
+                onClick={() => setGalleryZoom(Math.max(galleryZoom - 0.25, 0.5))}
+                disabled={galleryZoom <= 0.5}
+                aria-label="Diminuir zoom"
+              >
+                -
+              </button>
+              
+              <span className={styles.zoomLevel}>{Math.round(galleryZoom * 100)}%</span>
+              
+              <button
+                className={styles.zoomButton}
+                onClick={() => setGalleryZoom(Math.min(galleryZoom + 0.25, 3))}
+                disabled={galleryZoom >= 3}
+                aria-label="Aumentar zoom"
+              >
+                +
+              </button>
+              
+              <button
+                className={styles.zoomButton}
+                onClick={() => {
+                  setGalleryZoom(1);
+                  setGalleryPosition({ x: 0, y: 0 });
+                }}
+                aria-label="Resetar zoom"
+              >
+                Reset
+              </button>
+            </div>
+
+            {/* Image thumbnails in modal */}
+            {pet.images.length > 1 && (
+              <div className={styles.modalThumbnails}>
+                {pet.images.map((imageUrl, index) => (
+                  <button
+                    key={index}
+                    className={clsx(styles.modalThumbnail, {
+                      [styles.active]: index === currentImageIndex
+                    })}
+                    onClick={() => {
+                      setCurrentImageIndex(index);
+                      setGalleryZoom(1);
+                      setGalleryPosition({ x: 0, y: 0 });
+                    }}
+                  >
+                    <Image
+                      src={imageError[index] ? '/images/pet-placeholder.jpg' : imageUrl}
+                      alt={`${pet.name} - Miniatura ${index + 1}`}
+                      fill
+                      sizes="60px"
+                      className={styles.modalThumbnailImage}
+                    />
+                  </button>
+                ))}
+              </div>
             )}
           </div>
         )}

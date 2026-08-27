@@ -15,6 +15,11 @@ export default async function DashboardPage() {
     redirect('/auth/signin');
   }
 
+  // Redirect adopters to their specific dashboard
+  if (session.user.type === 'ADOPTER') {
+    redirect('/dashboard/adopter');
+  }
+
   const userTypeLabels = {
     'ADOPTER': 'Adotante',
     'INDIVIDUAL_OWNER': 'Pessoa Física',
@@ -90,7 +95,7 @@ export default async function DashboardPage() {
                 </a>
                 
                 <a
-                  href="/dashboard/perfil"
+                  href="/dashboard/profile"
                   className="inline-flex items-center px-4 py-2 bg-gray-600 text-white text-sm font-medium rounded-md hover:bg-gray-700"
                 >
                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

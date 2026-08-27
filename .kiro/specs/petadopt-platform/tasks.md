@@ -114,7 +114,7 @@ A arquitetura se baseia no App Router do Next.js com Server Components, API Rout
     - Testar error scenarios
     - _Requirements: 3.2, 3.3, 3.7_
 
-- [ ] 7. CRUD de pets e validação
+- [x] 7. CRUD de pets e validação
   - [x] 7.1 Implementar schemas de validação Zod
     - Criar petSchema com todas as validações
     - Implementar adoptionSchema com validação de formulário
@@ -125,14 +125,14 @@ A arquitetura se baseia no App Router do Next.js com Server Components, API Rout
     - **Property 3: Pet Data Validation**  
     - **Validates: Requirements 2.4**
 
-  - [ ] 7.3 Criar API routes para pets
+  - [x] 7.3 Criar API routes para pets
     - Implementar GET /api/pets com filtros e paginação
     - Implementar POST /api/pets com validação completa
     - Implementar PATCH /api/pets/[id] para edição
     - Implementar DELETE /api/pets/[id] com arquivamento
     - _Requirements: 2.1, 2.2, 2.5, 2.6, 2.7_
 
-  - [ ] 7.4 Implementar componentes de pet management
+  - [x] 7.4 Implementar componentes de pet management
     - Criar PetForm com upload de imagens integrado
     - Implementar PetCard com otimização de imagens
     - Criar PetDetails com galeria completa
@@ -144,8 +144,8 @@ A arquitetura se baseia no App Router do Next.js com Server Components, API Rout
     - Testar componentes com dados mock
     - _Requirements: 2.1, 2.5, 2.6, 2.7_
 
-- [ ] 8. Catálogo público com filtros
-  - [ ] 8.1 Implementar página de catálogo público
+- [x] 8. Catálogo público com filtros
+  - [x] 8.1 Implementar página de catálogo público
     - Criar /pets com listagem Server Component
     - Implementar PetFilters como Client Component
     - Configurar URL state management para filtros
@@ -176,7 +176,7 @@ A arquitetura se baseia no App Router do Next.js com Server Components, API Rout
     - **Property 11: Text Search Accuracy**
     - **Validates: Requirements 4.6**
 
-  - [ ] 8.8 Implementar busca avançada
+  - [x] 8.8 Implementar busca avançada
     - Adicionar filtros por localização e personalidade
     - Implementar filtros por necessidades especiais
     - Criar sistema de salvamento de preferências de busca
@@ -189,21 +189,21 @@ A arquitetura se baseia no App Router do Next.js com Server Components, API Rout
     - Testar casos de busca sem resultados
     - _Requirements: 4.2, 4.3, 4.4, 4.5, 4.6, 10.1, 10.5_
 
-- [ ] 9. Página de detalhes do pet
-  - [ ] 9.1 Implementar página /pets/[id]
+- [x] 9. Página de detalhes do pet
+  - [x] 9.1 Implementar página /pets/[id]
     - Criar layout de detalhes com informações completas
     - Implementar galeria de imagens com navegação
     - Mostrar informações de saúde e personalidade
     - Exibir informações do proprietário
     - _Requirements: 5.1, 5.2, 5.3, 5.4_
 
-  - [ ] 9.2 Adicionar botão de manifestar interesse
+  - [x] 9.2 Adicionar botão de manifestar interesse
     - Implementar botão condicional baseado em status
     - Integrar com sistema de autenticação
     - Criar modal de confirmação
     - _Requirements: 5.5, 5.6_
 
-  - [ ] 9.3 Implementar histórias de sucesso
+  - [x] 9.3 Implementar histórias de sucesso
     - Mostrar adoções anteriores do mesmo proprietário
     - Criar componente SuccessStories
     - _Requirements: 5.7_
@@ -214,25 +214,25 @@ A arquitetura se baseia no App Router do Next.js com Server Components, API Rout
     - Testar comportamento do botão de interesse
     - _Requirements: 5.1, 5.2, 5.5, 5.6_
 
-- [ ] 10. Checkpoint - Funcionalidades core completadas
+- [x] 10. Checkpoint - Funcionalidades core completadas
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 11. Sistema de adoção e workflow
-  - [ ] 11.1 Implementar formulário de adoção
+- [x] 11. Sistema de adoção e workflow
+  - [x] 11.1 Implementar formulário de adoção
     - Criar AdoptionForm com validação completa
     - Implementar coleta de informações pessoais
     - Adicionar seção de situação de moradia
     - Implementar seção de motivação e experiência
     - _Requirements: 6.1, 6.2_
 
-  - [ ] 11.2 Criar API routes para adoção
+  - [x] 11.2 Criar API routes para adoção
     - Implementar POST /api/adoptions para criação
     - Implementar PATCH /api/adoptions/[id] para status
     - Adicionar validação de autorização
     - Implementar lógica de status de pet
     - _Requirements: 6.3, 6.5, 6.6, 6.7_
 
-  - [ ] 11.3 Implementar sistema de aprovação
+  - [x] 11.3 Implementar sistema de aprovação
     - Criar componente AdoptionRequest para revisão
     - Implementar botões de aprovar/rejeitar
     - Criar modal com formulário de motivo de rejeição
@@ -244,20 +244,20 @@ A arquitetura se baseia no App Router do Next.js com Server Components, API Rout
     - Testar mudanças de status do pet
     - _Requirements: 6.3, 6.5, 6.6, 6.7, 6.8_
 
-- [ ] 12. Sistema de notificações por email
-  - [ ] 12.1 Configurar serviço de email (Resend)
+- [x] 12. Sistema de notificações por email
+  - [x] 12.1 Configurar serviço de email (Resend)
     - Configurar templates de email HTML
     - Implementar utility functions para envio
     - Criar sistema de retry para falhas
     - _Requirements: 8.1, 8.2, 8.6, 8.7_
 
-  - [ ] 12.2 Implementar notificações de adoção
+  - [x] 12.2 Implementar notificações de adoção
     - Enviar email para proprietário em nova solicitação
     - Notificar adotante sobre mudanças de status
     - Implementar alertas para pets que combinam com preferências
     - _Requirements: 8.1, 8.2, 8.3_
 
-  - [ ] 12.3 Adicionar opções de preferências de email
+  - [x] 12.3 Adicionar opções de preferências de email
     - Criar sistema de unsubscribe
     - Implementar preferências por tipo de notificação
     - _Requirements: 8.4, 8.5_
@@ -268,26 +268,26 @@ A arquitetura se baseia no App Router do Next.js com Server Components, API Rout
     - Testar unsubscribe functionality
     - _Requirements: 8.1, 8.2, 8.7_
 
-- [ ] 13. Dashboard de usuários
-  - [ ] 13.1 Implementar dashboard base
+- [x] 13. Dashboard de usuários
+  - [x] 13.1 Implementar dashboard base
     - Criar layout de dashboard responsivo
     - Implementar navegação lateral
     - Criar componente StatsCard para métricas
     - _Requirements: 7.3, 7.7_
 
-  - [ ] 13.2 Dashboard para adotantes
+  - [x] 13.2 Dashboard para adotantes
     - Mostrar pets favoritos e solicitações de adoção
     - Implementar histórico de atividades
     - Criar seção de preferências
     - _Requirements: 7.1, 7.5_
 
-  - [ ] 13.3 Dashboard para proprietários/abrigos
+  - [x] 13.3 Dashboard para proprietários/abrigos
     - Listar pets cadastrados com status
     - Mostrar solicitações de adoção recebidas
     - Implementar estatísticas de adoção
     - _Requirements: 7.2, 7.3_
 
-  - [ ] 13.4 Implementar edição de perfil
+  - [x] 13.4 Implementar edição de perfil
     - Criar formulário de edição de usuário
     - Implementar upload de avatar
     - Adicionar validação de dados
@@ -298,20 +298,20 @@ A arquitetura se baseia no App Router do Next.js com Server Components, API Rout
     - Testar funcionalidades de edição de perfil
     - _Requirements: 7.1, 7.2, 7.4_
 
-- [ ] 14. Sistema de abrigos
-  - [ ] 14.1 Implementar gestão de perfis de abrigos
+- [x] 14. Sistema de abrigos
+  - [x] 14.1 Implementar gestão de perfis de abrigos
     - Criar modelo e formulário de abrigo
     - Implementar upload de logo e fotos
     - Adicionar validação de informações obrigatórias
     - _Requirements: 11.1, 11.2, 11.4_
 
-  - [ ] 14.2 Integrar abrigos com pets
+  - [x] 14.2 Integrar abrigos com pets
     - Mostrar informações do abrigo na página do pet
     - Implementar estatísticas de adoção por abrigo
     - Criar páginas públicas de abrigos
     - _Requirements: 11.3, 11.5, 11.6_
 
-  - [ ] 14.3 Implementar gestão multi-usuário
+  - [x] 14.3 Implementar gestão multi-usuário
     - Permitir múltiplos staffs por abrigo
     - Implementar sistema de permissões
     - _Requirements: 11.7_
@@ -321,26 +321,26 @@ A arquitetura se baseia no App Router do Next.js com Server Components, API Rout
     - Testar associação com pets
     - _Requirements: 11.1, 11.2, 11.3_
 
-- [ ] 15. Segurança e validação avançada
-  - [ ] 15.1 Implementar rate limiting
+- [x] 15. Segurança e validação avançada
+  - [x] 15.1 Implementar rate limiting
     - Configurar Upstash Redis para rate limiting
     - Aplicar limites diferentes por endpoint
     - Implementar headers de rate limit
     - _Requirements: 12.2, 12.6_
 
-  - [ ] 15.2 Implementar sanitização de inputs
+  - [x] 15.2 Implementar sanitização de inputs
     - Criar middleware de sanitização
     - Implementar validação anti-injection
     - Adicionar escape de HTML em outputs
     - _Requirements: 12.1_
 
-  - [ ] 15.3 Configurar logging e monitoramento
+  - [x] 15.3 Configurar logging e monitoramento
     - Implementar logging de eventos de segurança
     - Configurar detecção de atividade suspeita
     - Implementar bloqueio automático de contas
     - _Requirements: 12.4, 12.6_
 
-  - [ ] 15.4 Implementar HTTPS e compliance
+  - [x] 15.4 Implementar HTTPS e compliance
     - Configurar headers de segurança
     - Implementar conformidade LGPD
     - Criar sistema de auditoria
@@ -352,20 +352,20 @@ A arquitetura se baseia no App Router do Next.js com Server Components, API Rout
     - Testar proteções contra ataques comuns
     - _Requirements: 12.1, 12.2, 12.6_
 
-- [ ] 16. Otimizações de performance
-  - [ ] 16.1 Implementar otimizações de imagem
+- [x] 16. Otimizações de performance
+  - [x] 16.1 Implementar otimizações de imagem
     - Configurar lazy loading de imagens
     - Implementar placeholders blur
     - Otimizar tamanhos e formatos automáticos
     - _Requirements: 9.3_
 
-  - [ ] 16.2 Implementar caching e otimizações de banco
+  - [x] 16.2 Implementar caching e otimizações de banco
     - Adicionar índices otimizados para queries
     - Implementar connection pooling
     - Configurar query optimization utilities
     - _Requirements: Performance geral_
 
-  - [ ] 16.3 Implementar infinite scroll e paginação
+  - [x] 16.3 Implementar infinite scroll e paginação
     - Criar hook useInfiniteScroll
     - Implementar PetListInfinite component
     - Otimizar carregamento incremental
@@ -376,24 +376,24 @@ A arquitetura se baseia no App Router do Next.js com Server Components, API Rout
     - Testar tempos de carregamento
     - _Requirements: 9.1, 9.3_
 
-- [ ] 17. Testes de integração e E2E
-  - [ ]* 17.1 Configurar Playwright para E2E
+- [x] 17. Testes de integração e E2E
+  - [x]* 17.1 Configurar Playwright para E2E
     - Configurar ambiente de testes E2E
     - Criar fixtures e helpers
     - _Requirements: Todos os fluxos principais_
 
-  - [ ]* 17.2 Implementar testes de fluxo completo
+  - [x]* 17.2 Implementar testes de fluxo completo
     - Testar fluxo completo de adoção
     - Testar cadastro e gerenciamento de pets
     - Testar autenticação e dashboard
     - _Requirements: 1.1-1.7, 2.1-2.7, 6.1-6.8_
 
-  - [ ]* 17.3 Escrever testes de responsividade
+  - [x]* 17.3 Escrever testes de responsividade
     - Testar funcionalidades em diferentes viewports
     - Verificar navegação touch-friendly
     - _Requirements: 9.1, 9.2, 9.5_
 
-- [ ] 18. Final checkpoint e otimizações
+- [x] 18. Final checkpoint e otimizações
   - Ensure all tests pass, ask the user if questions arise.
   - Verificar cobertura de testes (mínimo 80%)
   - Executar auditoria de acessibilidade completa
