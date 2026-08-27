@@ -6,43 +6,43 @@ export default function HomePage() {
     <Layout showNavigation={false}>
       <div className="min-h-screen bg-neutral-lighter">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-primary-orange to-primary-blue text-white py-20">
-          <div className="container">
-            <div className="max-w-4xl mx-auto text-center animate-slideUp">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-primary mb-6 text-white">
+        <section className="bg-gradient-to-br from-primary-orange to-primary-blue text-white py-24 md:py-32">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto text-center animate-slideUp">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-primary mb-6 text-white leading-tight">
                 Encontre seu 
                 <span className="text-secondary-yellow"> Companheiro</span> 
                 <br />
                 Perfeito 🐾
               </h1>
               
-              <p className="text-lg md:text-xl mb-8 text-white/90 max-w-2xl mx-auto">
+              <p className="text-base md:text-lg mb-10 text-white/90 max-w-2xl mx-auto leading-relaxed">
                 Conectamos corações. Milhares de cães e gatos estão esperando por uma família amorosa. 
                 Que tal ser você a fazer a diferença na vida de um pet?
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Button size="large" variant="success" className="shadow-xl">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+                <Button size="large" variant="success" className="shadow-xl w-full sm:w-auto">
                   🐕 Adotar um Pet
                 </Button>
-                <Button size="large" variant="outline" className="border-white text-white hover:bg-white hover:text-primary-orange">
+                <Button size="large" variant="outline" className="border-white text-white hover:bg-white hover:text-primary-orange w-full sm:w-auto">
                   💝 Cadastrar Pet
                 </Button>
               </div>
               
               {/* Estatísticas */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 pt-12 border-t border-white/20">
+              <div className="grid grid-cols-3 gap-4 md:gap-8 mt-12 pt-12 border-t border-white/20">
                 <div className="text-center">
-                  <div className="text-3xl font-bold font-primary text-secondary-yellow">2.847</div>
-                  <div className="text-sm text-white/80">Pets Adotados</div>
+                  <div className="text-2xl md:text-3xl font-bold font-primary text-secondary-yellow">2.847</div>
+                  <div className="text-xs md:text-sm text-white/80 mt-2">Pets Adotados</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold font-primary text-secondary-yellow">156</div>
-                  <div className="text-sm text-white/80">Famílias Felizes</div>
+                  <div className="text-2xl md:text-3xl font-bold font-primary text-secondary-yellow">156</div>
+                  <div className="text-xs md:text-sm text-white/80 mt-2">Famílias Felizes</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold font-primary text-secondary-yellow">89</div>
-                  <div className="text-sm text-white/80">Pets Disponíveis</div>
+                  <div className="text-2xl md:text-3xl font-bold font-primary text-secondary-yellow">89</div>
+                  <div className="text-xs md:text-sm text-white/80 mt-2">Pets Disponíveis</div>
                 </div>
               </div>
             </div>
@@ -50,20 +50,20 @@ export default function HomePage() {
         </section>
 
         {/* Pets em Destaque */}
-        <section className="py-16 bg-white">
-          <div className="container">
-            <div className="text-center mb-12 animate-fadeIn">
-              <h2 className="text-3xl md:text-4xl font-primary font-semibold text-neutral-dark mb-4">
+        <section className="py-20 md:py-28 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16 animate-fadeIn">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-primary font-semibold text-neutral-dark mb-4 leading-tight">
                 Pets Esperando por 
                 <span className="text-primary-orange"> Você</span>
               </h2>
-              <p className="text-lg text-neutral-medium max-w-2xl mx-auto">
+              <p className="text-base md:text-lg text-neutral-medium max-w-2xl mx-auto leading-relaxed">
                 Conheça alguns dos nossos amigos peludos que estão prontos para encher sua casa de amor e alegria.
               </p>
             </div>
             
             {/* Grid de Pets Mockados */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
               {mockPets.map((pet, index) => (
                 <PetCard key={index} pet={pet} />
               ))}
@@ -78,13 +78,13 @@ export default function HomePage() {
         </section>
 
         {/* Call to Action */}
-        <section className="py-16 bg-primary-green text-white">
-          <div className="container">
+        <section className="py-20 md:py-28 bg-primary-green text-white">
+          <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-3xl md:text-4xl font-primary font-semibold mb-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-primary font-semibold mb-6 leading-tight">
                 Pronto para Mudar uma Vida? 💚
               </h2>
-              <p className="text-lg mb-8 text-white/90">
+              <p className="text-base md:text-lg mb-10 text-white/90 leading-relaxed">
                 O processo de adoção é simples, seguro e pensado no bem-estar dos animais. 
                 Cadastre-se e comece sua jornada como tutor responsável hoje mesmo.
               </p>
