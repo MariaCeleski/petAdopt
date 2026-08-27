@@ -5,6 +5,7 @@ import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { validateEmail, validatePasswordStrength } from '@/lib/auth-utils';
 import { Button, Input, Select } from '@/components/ui';
+import PasswordInput from './PasswordInput';
 
 export default function SignUpForm() {
   const [formData, setFormData] = useState({
@@ -17,8 +18,6 @@ export default function SignUpForm() {
   });
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [passwordStrength, setPasswordStrength] = useState(0);
   const router = useRouter();
 
@@ -219,9 +218,8 @@ export default function SignUpForm() {
 
         {/* Campo Senha */}
         <div>
-          <Input
+          <PasswordInput
             label="Senha"
-            type={showPassword ? 'text' : 'password'}
             name="password"
             value={formData.password}
             onChange={handleChange}
@@ -229,26 +227,6 @@ export default function SignUpForm() {
             error={errors.password}
             required
             disabled={isLoading}
-            icon={
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="text-gray-400 hover:text-gray-600"
-                disabled={isLoading}
-              >
-                {showPassword ? (
-                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L9.878 9.878zM21.122 21.122L3 3" />
-                  </svg>
-                ) : (
-                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                  </svg>
-                )}
-              </button>
-            }
-            iconPosition="right"
           />
           
           {/* Indicador de força da senha */}
@@ -270,9 +248,8 @@ export default function SignUpForm() {
         </div>
 
         {/* Campo Confirmação de Senha */}
-        <Input
+        <PasswordInput
           label="Confirmar Senha"
-          type={showConfirmPassword ? 'text' : 'password'}
           name="confirmPassword"
           value={formData.confirmPassword}
           onChange={handleChange}
@@ -280,26 +257,6 @@ export default function SignUpForm() {
           error={errors.confirmPassword}
           required
           disabled={isLoading}
-          icon={
-            <button
-              type="button"
-              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-              className="text-gray-400 hover:text-gray-600"
-              disabled={isLoading}
-            >
-              {showConfirmPassword ? (
-                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L9.878 9.878zM21.122 21.122L3 3" />
-                </svg>
-              ) : (
-                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                </svg>
-              )}
-            </button>
-          }
-          iconPosition="right"
         />
 
         {/* Checkbox Termos */}

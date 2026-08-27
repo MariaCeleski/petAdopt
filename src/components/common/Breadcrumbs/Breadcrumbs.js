@@ -135,7 +135,7 @@ export default function Breadcrumbs({
               {item.href && !isLast ? (
                 <Link 
                   href={item.href}
-                  className={styles.link}
+                  className={`${styles.link} ${isFirst ? styles.homeLink : ''}`}
                 >
                   {item.icon && (
                     <span className={styles.icon} aria-hidden="true">

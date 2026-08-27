@@ -1,5 +1,6 @@
 import Layout from '@/components/common/Layout';
 import Button from '@/components/ui/Button';
+import SponsorsCarousel from '@/components/common/SponsorsCarousel/SponsorsCarousel';
 import styles from './page.module.css';
 
 export default function HomePage() {
@@ -77,6 +78,9 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        {/* Sponsors Carousel */}
+        <SponsorsCarousel />
 
         {/* Call to Action */}
         <section className={styles.ctaSection}>

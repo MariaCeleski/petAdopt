@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { fetchPets, getPetStats } from "@/lib/pets";
 import { PublicPetCatalog } from "./PublicPetCatalog";
 import PageNavigation from "@/components/common/PageNavigation/PageNavigation";
@@ -116,6 +117,10 @@ export default async function PetsPage({ searchParams = {} }) {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className={styles.heroSection}>
+        <Link href="/" className={styles.homeButton}>
+          <span className={styles.homeButtonArrow}>←</span>
+          <span>Início</span>
+        </Link>
         <div className={styles.heroContainer}>
           <div className={styles.heroContent}>
             <h1 className={styles.heroTitle}>
