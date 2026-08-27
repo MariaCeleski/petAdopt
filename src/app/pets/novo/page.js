@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
+import { PetImageUpload } from '@/components/pets/PetImageUpload';
 import styles from './page.module.css';
 
 /**
@@ -57,6 +58,13 @@ export default function NewPetPage() {
       personality: prev.personality.includes(trait)
         ? prev.personality.filter(t => t !== trait)
         : [...prev.personality, trait]
+    }));
+  };
+
+  const handleImagesChange = (images) => {
+    setFormData(prev => ({
+      ...prev,
+      images
     }));
   };
 
@@ -118,7 +126,7 @@ export default function NewPetPage() {
     <div className={styles.page}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h1 className={styles.title}>Cadastrar Novo Pet</h1>
+          <h1 className={styles.title}>Cadastrar Novo Pet 🐾</h1>
           <p className={styles.subtitle}>Compartilhe seu pet com potenciais adotantes</p>
         </div>
 
@@ -135,6 +143,20 @@ export default function NewPetPage() {
         )}
 
         <form onSubmit={handleSubmit} className={styles.form}>
+          {/* Fotos do Pet */}
+          <section className={styles.section}>
+            <h2 className={styles.sectionTitle}>Fotos do Pet</h2>
+            <p className={styles.sectionDescription}>
+              Adicione fotos atrativas do seu pet. A primeira foto será a principal.
+            </p>
+            
+            <PetImageUpload 
+              images={formData.images}
+              onImagesChange={handleImagesChange}
+              maxImages={5}
+            />
+          </section>
+
           {/* Informações Básicas */}
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Informações Básicas</h2>
