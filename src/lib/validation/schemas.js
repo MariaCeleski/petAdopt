@@ -119,10 +119,22 @@ export const petSchema = z.object({
     .transform(arr => {
       if (!arr || arr.length === 0) return [];
       
-      // Filter out Base64 images (too large for DB) - keep only URLs
+      // Aceita URLs HTTP/HTTPS e URLs locais (/uploads/...)
       const filteredImages = arr.filter(url => {
-        // Only keep URLs that start with http:// or https://
-        return url && (url.startsWith('http://') || url.startsWith('https://'));
+        if (!url) return false;
+        
+        // Cloudinary URLs
+        if (url.startsWith('https://') || url.startsWith('http://')) {
+          return true;
+        }
+        
+        // Local server URLs
+        if (url.startsWith('/uploads/')) {
+          return true;
+        }
+        
+        // Rejeita Base64
+        return false;
       }).map(url => sanitizeInput(url, 'url'));
       
       return filteredImages;

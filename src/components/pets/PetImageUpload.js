@@ -75,6 +75,29 @@ export function PetImageUpload({ images = [], onImagesChange, maxImages = 5 }) {
     }
   };
 
+  const uploadFileToLocalServer = async (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+      const response = await fetch('/api/upload-local', {
+        method: 'POST',
+        body: formData
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || 'Erro ao fazer upload');
+      }
+
+      const data = await response.json();
+      return data.url;
+    } catch (err) {
+      console.error('Local server upload error:', err);
+      throw err;
+    }
+  };
+
   const uploadFileAsBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -100,8 +123,18 @@ export function PetImageUpload({ images = [], onImagesChange, maxImages = 5 }) {
       return cloudinaryUrl;
     }
 
+    // Try local server next
+    console.log('Attempting local server upload...');
+    try {
+      const localUrl = await uploadFileToLocalServer(file);
+      console.log('Local server upload successful:', localUrl);
+      return localUrl;
+    } catch (err) {
+      console.warn('Local server upload failed:', err.message);
+    }
+
     // Fallback to Base64 (for development/MVP)
-    console.warn('Cloudinary not available, using local storage (Base64)');
+    console.warn('Using Base64 fallback (images will not be saved)');
     try {
       const base64Url = await uploadFileAsBase64(file);
       console.log('Using Base64 storage for development');
@@ -137,10 +170,11 @@ export function PetImageUpload({ images = [], onImagesChange, maxImages = 5 }) {
 
       if (uploadedUrls.length > 0) {
         onImagesChange([...images, ...uploadedUrls]);
-        // Show info message if using Base64 fallback
+        
+        // Show warning if using Base64 fallback
         if (uploadedUrls[0]?.startsWith('data:')) {
-          console.info('📝 Aviso: Imagens armazenadas em Base64. Configure Cloudinary para persistência.');
-          setError('⚠️  Imagens em modo de desenvolvimento (não serão salvas). Configure Cloudinary para produção.');
+          console.info('📝 Aviso: Imagens em Base64 (não serão salvas).');
+          setError('⚠️  Imagens em modo desenvolvimento (não serão salvas). Tente recarregar.');
         }
       }
     } finally {
