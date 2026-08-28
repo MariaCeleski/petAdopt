@@ -173,6 +173,22 @@ export default function OptimizedImage({
     );
   }
 
+  // Validate src is not empty
+  if (!imageSrc || imageSrc.trim() === '') {
+    return (
+      <div 
+        ref={containerRef}
+        className={containerClasses}
+        style={containerStyles}
+      >
+        <div className={styles.errorState}>
+          <div className={styles.errorIcon}>⚠</div>
+          <span className={styles.errorText}>Imagem não disponível</span>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div 
       ref={containerRef}

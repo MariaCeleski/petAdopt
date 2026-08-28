@@ -112,13 +112,23 @@ export default function NewPetPage() {
     try {
       // Log form data for debugging
       console.log('Submitting pet form data:', formData);
+      
+      // Filter out empty images before submission
+      const validImages = (formData.images || []).filter(img => img && img.trim() !== '');
+      
+      const dataToSubmit = {
+        ...formData,
+        images: validImages
+      };
+
+      console.log('Filtered images to submit:', validImages);
 
       const response = await fetch('/api/pets', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(dataToSubmit)
       });
 
       const data = await response.json();
