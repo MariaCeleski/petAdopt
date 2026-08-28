@@ -228,6 +228,31 @@
   margin-top: 0.125rem;
 }
 
+.infoMessage {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: #DBEAFE;
+  border: 1px solid #93C5FD;
+  border-radius: 0.5rem;
+  color: #1E40AF;
+  font-size: 0.9rem;
+  align-items: flex-start;
+}
+
+.infoMessage svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.infoMessage span {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
 .counter {
   font-size: 0.85rem;
   color: #6B7280;
@@ -329,6 +354,15 @@
     background: rgba(127, 29, 29, 0.2);
     border-color: #7F1D1D;
     color: #FCA5A5;
+  }
+}
+
+/* Dark Mode Info Message */
+@media (prefers-color-scheme: dark) {
+  .infoMessage {
+    background: rgba(30, 64, 175, 0.2);
+    border-color: #1E40AF;
+    color: #93C5FD;
   }
 }
 

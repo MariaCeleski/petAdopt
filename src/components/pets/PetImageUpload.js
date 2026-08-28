@@ -39,16 +39,12 @@ export function PetImageUpload({ images = [], onImagesChange, maxImages = 5 }) {
     }
   };
 
-  const uploadFile = async (file) => {
-    validateFile(file);
-
-    // Check if Cloudinary credentials are configured
+  const uploadFileToCloudinary = async (file) => {
     const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
     const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
 
     if (!cloudName || !uploadPreset) {
-      console.warn('Cloudinary not configured. Please set NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME and NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET environment variables.');
-      throw new Error('Configuração de upload não disponível. Contacte o administrador.');
+      return null; // Return null to indicate Cloudinary not configured
     }
 
     const formData = new FormData();
@@ -60,23 +56,58 @@ export function PetImageUpload({ images = [], onImagesChange, maxImages = 5 }) {
         `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
         {
           method: 'POST',
-          body: formData
+          body: formData,
+          timeout: 30000
         }
       );
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
         console.error('Cloudinary error:', errorData);
-        throw new Error('Erro ao fazer upload. Verifique sua conexão e tente novamente.');
+        return null;
       }
 
       const data = await response.json();
       return data.secure_url;
     } catch (err) {
-      if (err instanceof TypeError) {
-        throw new Error('Erro de conexão. Verifique sua internet e tente novamente.');
-      }
-      throw err;
+      console.error('Cloudinary upload error:', err);
+      return null;
+    }
+  };
+
+  const uploadFileAsBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        resolve(e.target.result);
+      };
+      reader.onerror = (err) => {
+        reject(new Error('Erro ao processar a imagem'));
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const uploadFile = async (file) => {
+    validateFile(file);
+
+    // Try Cloudinary first
+    console.log('Attempting Cloudinary upload...');
+    const cloudinaryUrl = await uploadFileToCloudinary(file);
+    
+    if (cloudinaryUrl) {
+      console.log('Cloudinary upload successful:', cloudinaryUrl);
+      return cloudinaryUrl;
+    }
+
+    // Fallback to Base64 (for development/MVP)
+    console.warn('Cloudinary not available, using local storage (Base64)');
+    try {
+      const base64Url = await uploadFileAsBase64(file);
+      console.log('Using Base64 storage for development');
+      return base64Url;
+    } catch (err) {
+      throw new Error('Erro ao processar a imagem. Tente novamente.');
     }
   };
 
@@ -106,6 +137,10 @@ export function PetImageUpload({ images = [], onImagesChange, maxImages = 5 }) {
 
       if (uploadedUrls.length > 0) {
         onImagesChange([...images, ...uploadedUrls]);
+        // Show info message if using Base64 fallback
+        if (uploadedUrls[0]?.startsWith('data:')) {
+          console.info('📝 Imagens armazenadas em Base64 (desenvolvimento)');
+        }
       }
     } finally {
       setUploading(false);
@@ -239,6 +274,22 @@ export function PetImageUpload({ images = [], onImagesChange, maxImages = 5 }) {
             />
           </svg>
           {error}
+        </div>
+      )}
+
+      {/* Development Mode Info */}
+      {images.length > 0 && images[0]?.startsWith('data:') && (
+        <div className={styles.infoMessage}>
+          <svg fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fillRule="evenodd"
+              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+              clipRule="evenodd"
+            />
+          </svg>
+          <span>
+            <strong>Modo de desenvolvimento:</strong> Imagens armazenadas localmente. Configure Cloudinary para produção.
+          </span>
         </div>
       )}
 

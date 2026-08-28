@@ -1,5 +1,28 @@
 # Cloudinary Setup Guide
 
+## 🎯 Status Atual
+
+✅ **Upload funciona agora!** Com fallback automático:
+- ☁️ Se Cloudinary está configurado → Usa Cloudinary
+- 💾 Se Cloudinary não está configurado → Usa armazenamento Base64 (desenvolvimento)
+
+---
+
+## 🔄 Como Funciona o Fallback
+
+### Cenário 1: Cloudinary Configurado ✅
+```
+User seleciona imagem → Upload via Cloudinary → URL persistente no servidor
+```
+
+### Cenário 2: Cloudinary Não Configurado (MVP/Desenvolvimento) ✅
+```
+User seleciona imagem → Convertido para Base64 → Armazenado localmente
+Mensagem: "Modo de desenvolvimento: Imagens armazenadas localmente"
+```
+
+---
+
 ## Problemas Identificados
 
 A configuração do Cloudinary estava **incompleta** causando erro ao fazer upload de imagens:
@@ -72,6 +95,53 @@ yarn dev
 ### "Arquivo muito grande"
 - Máximo 5MB por arquivo
 - Redimensione a imagem ou use formato comprimido (WebP)
+
+## Troubleshooting
+
+### "Configuração de upload não disponível"
+- Verifique se `.env.local` existe
+- Verifique se `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME` está preenchido
+- Verifique se `NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET` está correto
+
+### "Erro ao fazer upload"
+- Verifique sua conexão de internet
+- Verifique se o upload preset `petadopt_unsigned` existe no Cloudinary
+- Verifique o console do navegador (F12) para mais detalhes
+
+### "Arquivo muito grande"
+- Máximo 5MB por arquivo
+- Redimensione a imagem ou use formato comprimido (WebP)
+
+---
+
+## 🚀 Desenvolvimento vs Produção
+
+### Modo Desenvolvimento (Atual - Base64)
+```
+✅ Funciona sem configuração
+✅ Rápido para testes
+❌ Imagens não persistem (apenas session)
+❌ Base64 é maior em tamanho
+```
+
+### Modo Produção (Recomendado - Cloudinary)
+```
+✅ Imagens persistem
+✅ CDN global
+✅ Otimização automática
+❌ Requer conta Cloudinary
+```
+
+---
+
+## Migração para Produção
+
+1. Configure Cloudinary (veja seção acima)
+2. Preencha `.env` com credenciais
+3. Deploy fará upload direto
+4. Base64 será automaticamente substituído
+
+---
 
 ## Variáveis de Ambiente
 
