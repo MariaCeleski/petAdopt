@@ -125,10 +125,20 @@ export default function NewPetPage() {
       }
 
       setSuccess(true);
+      
+      // Redirect to pet details page
+      // The API returns { message, pet: { id, ... } }
+      const petId = data.pet?.id;
+      if (!petId) {
+        console.error('No pet ID in response:', data);
+        throw new Error('Erro ao criar pet: ID não retornado');
+      }
+
       setTimeout(() => {
-        router.push(`/pets/${data.id}`);
+        router.push(`/pets/${petId}`);
       }, 1500);
     } catch (err) {
+      console.error('Submit error:', err);
       setError(err.message);
     } finally {
       setIsLoading(false);
