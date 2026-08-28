@@ -110,6 +110,9 @@ export default function NewPetPage() {
     setError(null);
 
     try {
+      // Log form data for debugging
+      console.log('Submitting pet form data:', formData);
+
       const response = await fetch('/api/pets', {
         method: 'POST',
         headers: {
@@ -119,20 +122,35 @@ export default function NewPetPage() {
       });
 
       const data = await response.json();
+      
+      console.log('API Response:', data);
 
       if (!response.ok) {
-        throw new Error(data.error || 'Erro ao criar pet');
+        // Show detailed error message
+        let errorMessage = data.error || 'Erro ao criar pet';
+        
+        // If validation error, show details
+        if (data.code === 'VALIDATION_ERROR' && data.details) {
+          const firstError = Object.values(data.details)[0];
+          if (firstError && firstError._errors && firstError._errors.length > 0) {
+            errorMessage = firstError._errors[0];
+          }
+        }
+        
+        throw new Error(errorMessage);
+      }
+
+      // Ensure we have a pet object with an ID
+      if (!data.pet || !data.pet.id) {
+        console.error('Invalid API response, no pet.id:', data);
+        throw new Error('Erro ao criar pet: resposta inválida do servidor');
       }
 
       setSuccess(true);
       
       // Redirect to pet details page
-      // The API returns { message, pet: { id, ... } }
-      const petId = data.pet?.id;
-      if (!petId) {
-        console.error('No pet ID in response:', data);
-        throw new Error('Erro ao criar pet: ID não retornado');
-      }
+      const petId = data.pet.id;
+      console.log('Pet created successfully, redirecting to:', `/pets/${petId}`);
 
       setTimeout(() => {
         router.push(`/pets/${petId}`);

@@ -80,10 +80,10 @@ export const petSchema = z.object({
     .transform(val => sanitizeInput(val, 'text')),
 
   color: z.string()
-    .min(1, 'Cor é obrigatória')
     .max(30, 'Cor muito longa')
-    .refine(val => /^[a-zA-ZÀ-ÿ\s\-]+$/.test(val), 'Cor deve conter apenas letras, espaços e hífens')
-    .transform(val => sanitizeInput(val, 'text')),
+    .optional()
+    .nullable()
+    .transform(val => val === '' || val == null ? null : sanitizeInput(val, 'text')),
     
   // Optional fields with validation (Requirement 2.4)
   isNeutered: z.boolean().default(false),
