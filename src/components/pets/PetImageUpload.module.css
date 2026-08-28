@@ -228,6 +228,25 @@
   margin-top: 0.125rem;
 }
 
+.warningMessage {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: #FEF3C7;
+  border: 1px solid #FCD34D;
+  border-radius: 0.5rem;
+  color: #92400E;
+  font-size: 0.9rem;
+  align-items: flex-start;
+}
+
+.warningMessage svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
 .infoMessage {
   display: flex;
   gap: 0.75rem;
@@ -354,6 +373,12 @@
     background: rgba(127, 29, 29, 0.2);
     border-color: #7F1D1D;
     color: #FCA5A5;
+  }
+
+  .warningMessage {
+    background: rgba(120, 53, 15, 0.2);
+    border-color: #92400E;
+    color: #FCD34D;
   }
 }
 

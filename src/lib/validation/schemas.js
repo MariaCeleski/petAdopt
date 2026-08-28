@@ -116,14 +116,17 @@ export const petSchema = z.object({
     .max(10, 'Máximo 10 imagens por pet')
     .default([])
     .optional()
-    .transform(arr => arr?.map(url => sanitizeInput(url, 'url')).filter(url => {
-      try {
-        const parsed = new URL(url);
-        return ['http:', 'https:'].includes(parsed.protocol);
-      } catch {
-        return false;
-      }
-    }) || []),
+    .transform(arr => {
+      if (!arr || arr.length === 0) return [];
+      
+      // Filter out Base64 images (too large for DB) - keep only URLs
+      const filteredImages = arr.filter(url => {
+        // Only keep URLs that start with http:// or https://
+        return url && (url.startsWith('http://') || url.startsWith('https://'));
+      }).map(url => sanitizeInput(url, 'url'));
+      
+      return filteredImages;
+    }),
 });
 
 // Enhanced Adoption Validation Schema
