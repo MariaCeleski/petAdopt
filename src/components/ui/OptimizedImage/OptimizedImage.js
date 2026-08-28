@@ -45,8 +45,31 @@ export default function OptimizedImage({
   const [isInView, setIsInView] = useState(!lazy || priority);
   const [loadStarted, setLoadStarted] = useState(false);
   
+  // Check if src is empty immediately - CRITICAL: must check before any Image component usage
+  const isSrcEmpty = !imageSrc || (typeof imageSrc === 'string' && imageSrc.trim() === '');
+  
   const containerRef = useRef(null);
   const observerRef = useRef(null);
+
+  // Early exit if src is empty - prevents ReactDOM.preload() error
+  if (isSrcEmpty) {
+    return (
+      <div 
+        ref={containerRef}
+        className={clsx(
+          styles.container,
+          { [styles.rounded]: rounded, [styles.error]: true },
+          containerClassName
+        )}
+        style={aspectRatio && !fill ? { aspectRatio } : {}}
+      >
+        <div className={styles.errorState}>
+          <div className={styles.errorIcon}>⚠</div>
+          <span className={styles.errorText}>Imagem não disponível</span>
+        </div>
+      </div>
+    );
+  }
 
   // Default blur data URL for placeholder
   const defaultBlurDataURL = 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R+kXoiijm3zHmLiIcBOKhvpgRPrXHTnHIASZuoAJgPdv/X4k0l1KN/LJGYlM=';
@@ -168,22 +191,6 @@ export default function OptimizedImage({
           {showLoadingSpinner && (
             <div className={styles.spinner} />
           )}
-        </div>
-      </div>
-    );
-  }
-
-  // Validate src is not empty
-  if (!imageSrc || imageSrc.trim() === '') {
-    return (
-      <div 
-        ref={containerRef}
-        className={containerClasses}
-        style={containerStyles}
-      >
-        <div className={styles.errorState}>
-          <div className={styles.errorIcon}>⚠</div>
-          <span className={styles.errorText}>Imagem não disponível</span>
         </div>
       </div>
     );
